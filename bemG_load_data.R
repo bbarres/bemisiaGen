@@ -34,16 +34,15 @@ K2_colorder<-read.table("data/Q_bemigen_K2.colorder",header=FALSE,
                         blank.lines.skip=TRUE,sep="\t")
 #then we split the dataframe in as many repetition that has been made
 #by the number of individuals (here 54)
-K2_100runs<-split(K2_100runs,rep(1:100,each=54))
+K2_100runs<-split(K2_100runs[,-c(1:5)],rep(1:100,each=54))
 #reordering the columns so that the different repetition colorization fit
 for (i in 1:100){
   K2_100runs[[i]]<-K2_100runs[[i]][as.numeric(K2_colorder[i,])]
 }
-#importing the order of the run so that the different repetition corresponding
-#to the same clustering solution followed each other
-K2_reporder<-read.table("data/AgrAccconsK2.ind_linorder",header=FALSE,
+#importing the order of the run so that the different repetition 
+#corresponding to the same clustering solution followed each other
+K2_reporder<-read.table("data/Q_bemigen_K2.runorder",header=FALSE,
                         blank.lines.skip=TRUE,sep="\t")+1
-K2_reporder<-c(1:100)
 
 coloor <- c("chartreuse4","firebrick","khaki2","darkorange","royalblue4")
 effpop<-c(2,4,1,17,1,9,20)
