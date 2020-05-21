@@ -8,6 +8,10 @@
 library(adegenet)
 library(gdata)
 library(RColorBrewer)
+library(diveRsity)
+library(hierfstat)
+library(PopGenReport)
+library(poppr)
 
 #loading the functions
 source("bemG_strplot_fun.R")
