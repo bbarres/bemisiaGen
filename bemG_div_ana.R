@@ -12,7 +12,8 @@ source("bemG_load_data.R")
 #preparing the dataset for within species diversity analysis####
 ##############################################################################/
 
-#we first remove the 'hybride' from the dataset
+#we first remove the 'hybride' from the dataset, so we can study each 
+#species distinctively
 bemipop<-bemipop[bemipop$species!="Hybride",]
 bemipop<-drop.levels(bemipop)
 
@@ -208,6 +209,15 @@ wc(genind2hierfstat(IoAde))
 pairwise.WCfst(genind2hierfstat(IoAde))
 poppr(IoAde)
 summary(IoAde)
+
+
+##############################################################################/
+#Concatenate a diversity file for all species (with pop with >4 ind)####
+##############################################################################/
+
+diversiSpec<-rbind(Meddivtab,MeaMdivtab,Iodivtab)
+write.table(diversiSpec,file="output/diversiSpec.txt",
+            sep="\t",quote=FALSE,row.names=FALSE)
 
 
 ##############################################################################/
