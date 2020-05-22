@@ -18,6 +18,13 @@ source("bemG_strplot_fun.R")
 
 
 ##############################################################################/
+#Population genetic data loading####
+##############################################################################/
+
+bemipop<-read.table("data/bem_genepop.txt",header=TRUE,sep="\t")
+
+
+##############################################################################/
 #Bemisia Q: plot a list of 100 STRUCTURE output files for each K####
 ##############################################################################/
 
@@ -133,6 +140,17 @@ for (i in 1:50){
 #corresponding to the same clustering solution followed each other
 K3_reporderBMS<-read.table("data/BMS_bemigen_K3.runorder",header=FALSE,
                            blank.lines.skip=TRUE,sep="\t")+1
+
+
+##############################################################################/
+#Writing info session for reproducibility####
+##############################################################################/
+
+sink("session_info.txt")
+print(sessioninfo::session_info())
+sink()
+#inspired by an R gist of François Briatte: 
+#https://gist.github.com/briatte/14e47fb0cfb8801f25c889edea3fcd9b
 
 
 ##############################################################################/
