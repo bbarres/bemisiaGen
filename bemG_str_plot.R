@@ -12,7 +12,7 @@ source("bemG_load_data.R")
 #Bemisia Q: plot a list of 50 STRUCTURE output files for each K####
 ##############################################################################/
 
-coloor <- c("chartreuse4","firebrick","khaki2","darkorange","royalblue4")
+coloor<-c("chartreuse4","firebrick","khaki2","darkorange","royalblue4")
 effpop<-c(2,4,1,17,1,9,20)
 poptiquet<-c("8","32","33","34","47","56","320")
 #now we can plot the 50 runs on the same figure
@@ -20,7 +20,7 @@ poptiquet<-c("8","32","33","34","47","56","320")
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
 for (i in 1:50){
   j<-as.numeric(K2_reporderQ[i])
-  temp<-K2_50runs[[j]]
+  temp<-Q_K2_50runs[[j]]
   structplot(t(temp),coloor,effpop,poptiquet,spacepop=1,
              leg_y="K=2",cexy=1.2,mef=c(0,0,0,0,0),colbord=NA,
              distxax=0.15,angl=0,cexpop=1.5)
@@ -33,7 +33,7 @@ par(op)
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
 for (i in 1:50){
   j<-as.numeric(K3_reporderQ[i])
-  temp<-K3_50runs[[j]]
+  temp<-Q_K3_50runs[[j]]
   structplot(t(temp),coloor,effpop,poptiquet,spacepop=1,
              leg_y="K=3",cexy=1.2,mef=c(0,0,0,0,0),colbord=NA,
              distxax=0.15,angl=0,cexpop=1.5)
@@ -46,7 +46,7 @@ par(op)
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
 for (i in 1:50){
   j<-as.numeric(K4_reporderQ[i])
-  temp<-K4_50runs[[j]]
+  temp<-Q_K4_50runs[[j]]
   structplot(t(temp),coloor,effpop,poptiquet,spacepop=1,
              leg_y="K=4",cexy=1.2,mef=c(0,0,0,0,0),colbord=NA,
              distxax=0.15,angl=0,cexpop=1.5)
@@ -60,7 +60,7 @@ par(op)
 #Bemisia BMS: plot a list of 50 STRUCTURE output files for each K####
 ##############################################################################/
 
-coloor <- c("chartreuse4","firebrick","khaki2","darkorange","royalblue4")
+coloor<-c("chartreuse4","firebrick","khaki2","darkorange","royalblue4")
 effpop<-c(31,10,28,24,26,21,22,19,23,30,30,32,30,30,26,32,31,23,28,26,31,
           59,27,31,27,32,27,28,15,31,29,4,26,35,23,16,12,12,14,24,20,26,
           32,31,12,32,31,29,32,12,32,2,32,32,32,32,12,5,17,2,29)
@@ -75,7 +75,7 @@ poptiquet<-c("1","2","4","5","6","7","8","9","10","11","12","13","14","16",
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
 for (i in 1:50){
   j<-as.numeric(K2_reporderBMS[i])
-  temp<-K2_50runs[[j]]
+  temp<-BMS_K2_50runs[[j]]
   structplot(t(temp),coloor,effpop,poptiquet,spacepop=1,
              leg_y="K=2",cexy=1.2,mef=c(0,0,0,0,0),colbord=NA,
              distxax=0.15,angl=0,cexpop=1.5)
@@ -88,7 +88,7 @@ par(op)
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
 for (i in 1:50){
   j<-as.numeric(K3_reporderBMS[i])
-  temp<-K3_50runs[[j]]
+  temp<-BMS_K3_50runs[[j]]
   structplot(t(temp),coloor,effpop,poptiquet,spacepop=1,
              leg_y="K=3",cexy=1.2,mef=c(0,0,0,0,0),colbord=NA,
              distxax=0.15,angl=0,cexpop=1.5)
