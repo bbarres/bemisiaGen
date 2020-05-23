@@ -60,7 +60,7 @@ Meddivtab<-data.frame(Meddivtab,
                        "He"=Hs(MedAde),
                        "Na"=summary(MedAde)$pop.n.all,
                        "Ar"=colMeans(allelic.richness(MedAde)$Ar),
-                       "species"="MEAM1")
+                       "species"="MED")
 
 #finding the location with several populations (ie several environments)
 sevenvir<-names(rowSums(
