@@ -12,6 +12,12 @@ library(diveRsity)
 library(hierfstat)
 library(PopGenReport)
 library(poppr)
+library(rgdal)
+library(rgeos)
+library(maptools)
+library(plotrix)
+library(classInt)
+library(sf)
 
 #loading the functions
 source("bemG_strplot_fun.R")
