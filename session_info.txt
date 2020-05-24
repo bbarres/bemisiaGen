@@ -8,7 +8,7 @@
  collate  French_France.1252          
  ctype    French_France.1252          
  tz       Europe/Paris                
- date     2020-05-23                  
+ date     2020-05-24                  
 
 - Packages ------------------------------------------------------------------------
  package      * version   date       lib source        
@@ -25,7 +25,7 @@
  calibrate      1.7.5     2019-10-01 [1] CRAN (R 3.6.3)
  checkmate      2.0.0     2020-02-06 [1] CRAN (R 3.6.3)
  class          7.3-15    2019-01-01 [2] CRAN (R 3.6.1)
- classInt       0.4-3     2020-04-07 [1] CRAN (R 3.6.3)
+ classInt     * 0.4-3     2020-04-07 [1] CRAN (R 3.6.3)
  cli            2.0.2     2020-02-28 [1] CRAN (R 3.6.3)
  cluster        2.1.0     2019-06-19 [2] CRAN (R 3.6.1)
  coda           0.19-3    2019-07-05 [1] CRAN (R 3.6.1)
@@ -81,6 +81,7 @@
  LearnBayes     2.15.1    2018-03-18 [1] CRAN (R 3.6.0)
  lifecycle      0.2.0     2020-03-06 [1] CRAN (R 3.6.3)
  magrittr       1.5       2014-11-22 [1] CRAN (R 3.6.1)
+ maptools     * 1.0-1     2020-05-14 [1] CRAN (R 3.6.3)
  MASS           7.3-51.4  2019-03-31 [2] CRAN (R 3.6.1)
  Matrix         1.2-17    2019-03-22 [2] CRAN (R 3.6.1)
  mgcv           1.8-28    2019-03-21 [2] CRAN (R 3.6.1)
@@ -98,6 +99,7 @@
  phangorn       2.5.5     2019-06-19 [1] CRAN (R 3.6.3)
  pillar         1.4.4     2020-05-05 [1] CRAN (R 3.6.3)
  pkgconfig      2.0.3     2019-09-22 [1] CRAN (R 3.6.3)
+ plotrix      * 3.7-8     2020-04-16 [1] CRAN (R 3.6.3)
  plyr           1.8.6     2020-03-03 [1] CRAN (R 3.6.3)
  png            0.1-7     2013-12-03 [1] CRAN (R 3.6.0)
  polysat        1.7-4     2019-03-06 [1] CRAN (R 3.6.3)
@@ -117,7 +119,8 @@
  Rcpp           1.0.4.6   2020-04-09 [1] CRAN (R 3.6.3)
  reshape        0.8.8     2018-10-23 [1] CRAN (R 3.6.3)
  reshape2       1.4.4     2020-04-09 [1] CRAN (R 3.6.3)
- rgdal          1.4-8     2019-11-27 [1] CRAN (R 3.6.3)
+ rgdal        * 1.4-8     2019-11-27 [1] CRAN (R 3.6.3)
+ rgeos        * 0.5-3     2020-05-08 [1] CRAN (R 3.6.3)
  RgoogleMaps    1.4.5.3   2020-02-12 [1] CRAN (R 3.6.3)
  rjson          0.2.20    2018-06-08 [1] CRAN (R 3.6.0)
  rlang          0.4.6     2020-05-02 [1] CRAN (R 3.6.3)
@@ -126,9 +129,9 @@
  scales         1.1.1     2020-05-11 [1] CRAN (R 3.6.3)
  seqinr         3.6-1     2019-09-07 [1] CRAN (R 3.6.1)
  sessioninfo    1.1.1     2018-11-05 [1] CRAN (R 3.6.1)
- sf             0.9-3     2020-05-04 [1] CRAN (R 3.6.3)
+ sf           * 0.9-3     2020-05-04 [1] CRAN (R 3.6.3)
  shiny          1.4.0.2   2020-03-13 [1] CRAN (R 3.6.3)
- sp             1.4-2     2020-05-20 [1] CRAN (R 3.6.1)
+ sp           * 1.4-2     2020-05-20 [1] CRAN (R 3.6.1)
  spData         0.3.5     2020-04-06 [1] CRAN (R 3.6.3)
  spdep          1.1-3     2019-09-18 [1] CRAN (R 3.6.1)
  stringi        1.4.6     2020-02-17 [1] CRAN (R 3.6.2)
