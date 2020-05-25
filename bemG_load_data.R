@@ -44,10 +44,10 @@ bemipop<-read.table("data/bem_genepop.txt",header=TRUE,sep="\t")
 #in excel for example)
 
 #for K=2, import the 50 run datafile (50 q matrix)
-Q_K2_50runs<-read.table("data/Q_bemigen_K2.indfile",header=FALSE,
+Q_K2_50runs<-read.table("data/50runs/Q_bemigen_K2.indfile",header=FALSE,
                         blank.lines.skip=TRUE,sep="\t")
 #import the column order for the best CLUMPP "permutation"
-Q_K2_colorder<-read.table("data/Q_bemigen_K2.colorder",header=FALSE,
+Q_K2_colorder<-read.table("data/50runs/Q_bemigen_K2.colorder",header=FALSE,
                           blank.lines.skip=TRUE,sep="\t")
 #then we split the dataframe in as many repetition that has been made
 #by the number of individuals (here 54)
@@ -58,14 +58,14 @@ for (i in 1:50){
 }
 #importing the order of the run so that the different repetition 
 #corresponding to the same clustering solution followed each other
-K2_reporderQ<-read.table("data/Q_bemigen_K2.runorder",header=FALSE,
+K2_reporderQ<-read.table("data/50runs/Q_bemigen_K2.runorder",header=FALSE,
                          blank.lines.skip=TRUE,sep="\t")+1
 
 #for K=3, import the 50 run datafile (50 q matrix)
-Q_K3_50runs<-read.table("data/Q_bemigen_K3.indfile",header=FALSE,
+Q_K3_50runs<-read.table("data/50runs/Q_bemigen_K3.indfile",header=FALSE,
                         blank.lines.skip=TRUE,sep="\t")
 #import the column order for the best CLUMPP "permutation"
-Q_K3_colorder<-read.table("data/Q_bemigen_K3.colorder",header=FALSE,
+Q_K3_colorder<-read.table("data/50runs/Q_bemigen_K3.colorder",header=FALSE,
                           blank.lines.skip=TRUE,sep="\t")
 #then we split the dataframe in as many repetition that has been made
 #by the number of individuals (here 54)
@@ -76,14 +76,14 @@ for (i in 1:50){
 }
 #importing the order of the run so that the different repetition 
 #corresponding to the same clustering solution followed each other
-K3_reporderQ<-read.table("data/Q_bemigen_K3.runorder",header=FALSE,
+K3_reporderQ<-read.table("data/50runs/Q_bemigen_K3.runorder",header=FALSE,
                          blank.lines.skip=TRUE,sep="\t")+1
 
 #for K=4, import the 50 run datafile (50 q matrix)
-Q_K4_50runs<-read.table("data/Q_bemigen_K4.indfile",header=FALSE,
+Q_K4_50runs<-read.table("data/50runs/Q_bemigen_K4.indfile",header=FALSE,
                         blank.lines.skip=TRUE,sep="\t")
 #import the column order for the best CLUMPP "permutation"
-Q_K4_colorder<-read.table("data/Q_bemigen_K4.colorder",header=FALSE,
+Q_K4_colorder<-read.table("data/50runs/Q_bemigen_K4.colorder",header=FALSE,
                           blank.lines.skip=TRUE,sep="\t")
 #then we split the dataframe in as many repetition that has been made
 #by the number of individuals (here 54)
@@ -94,7 +94,7 @@ for (i in 1:50){
 }
 #importing the order of the run so that the different repetition 
 #corresponding to the same clustering solution followed each other
-K4_reporderQ<-read.table("data/Q_bemigen_K4.runorder",header=FALSE,
+K4_reporderQ<-read.table("data/50runs/Q_bemigen_K4.runorder",header=FALSE,
                          blank.lines.skip=TRUE,sep="\t")+1
 
 
@@ -112,10 +112,10 @@ K4_reporderQ<-read.table("data/Q_bemigen_K4.runorder",header=FALSE,
 #in excel for example)
 
 #for K=2, import the 50 run datafile (50 q matrix)
-BMS_K2_50runs<-read.table("data/BMS_bemigen_K2.indfile",header=FALSE,
+BMS_K2_50runs<-read.table("data/50runs/BMS_bemigen_K2.indfile",header=FALSE,
                           blank.lines.skip=TRUE,sep="\t")
 #import the column order for the best CLUMPP "permutation"
-BMS_K2_colorder<-read.table("data/BMS_bemigen_K2.colorder",header=FALSE,
+BMS_K2_colorder<-read.table("data/50runs/BMS_bemigen_K2.colorder",header=FALSE,
                             blank.lines.skip=TRUE,sep="\t")
 #then we split the dataframe in as many repetition that has been made
 #by the number of individuals (here 54)
@@ -126,14 +126,14 @@ for (i in 1:50){
 }
 #importing the order of the run so that the different repetition 
 #corresponding to the same clustering solution followed each other
-K2_reporderBMS<-read.table("data/BMS_bemigen_K2.runorder",header=FALSE,
+K2_reporderBMS<-read.table("data/50runs/BMS_bemigen_K2.runorder",header=FALSE,
                            blank.lines.skip=TRUE,sep="\t")+1
 
 #for K=3, import the 50 run datafile (50 q matrix)
-BMS_K3_50runs<-read.table("data/BMS_bemigen_K3.indfile",header=FALSE,
+BMS_K3_50runs<-read.table("data/50runs/BMS_bemigen_K3.indfile",header=FALSE,
                           blank.lines.skip=TRUE,sep="\t")
 #import the column order for the best CLUMPP "permutation"
-BMS_K3_colorder<-read.table("data/BMS_bemigen_K3.colorder",header=FALSE,
+BMS_K3_colorder<-read.table("data/50runs/BMS_bemigen_K3.colorder",header=FALSE,
                             blank.lines.skip=TRUE,sep="\t")
 #then we split the dataframe in as many repetition that has been made
 #by the number of individuals (here 54)
@@ -144,7 +144,7 @@ for (i in 1:50){
 }
 #importing the order of the run so that the different repetition 
 #corresponding to the same clustering solution followed each other
-K3_reporderBMS<-read.table("data/BMS_bemigen_K3.runorder",header=FALSE,
+K3_reporderBMS<-read.table("data/50runs/BMS_bemigen_K3.runorder",header=FALSE,
                            blank.lines.skip=TRUE,sep="\t")+1
 
 
