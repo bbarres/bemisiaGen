@@ -18,6 +18,8 @@ library(maptools)
 library(plotrix)
 library(classInt)
 library(sf)
+library(elevatr)
+library(tanaka)
 
 #loading the functions
 source("bemG_strplot_fun.R")
@@ -38,10 +40,9 @@ bemipop<-read.table("data/bem_genepop.txt",header=TRUE,sep="\t")
 #you can reorganize the output file such as the labels of the different group 
 #in the different run match (using CLUMPP for example). Here we import the 
 #output file of CLUMPAK (http://clumpak.tau.ac.il/index.html) and then we plot 
-#all the repetitions in the same graph  
-#We first need to edit a little the output file in excel prior to the 
-#importation: we turn spaces into tab, to separate the columns (easily done 
-#in excel for example)
+#all the repetitions in the same graph. 
+#The clumpack output files need some minor edition in prior to the 
+#importation: we turn the separator from space into tab
 
 #for K=2, import the 50 run datafile (50 q matrix)
 Q_K2_50runs<-read.table("data/50runs/Q_bemigen_K2.indfile",header=FALSE,

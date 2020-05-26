@@ -8,7 +8,7 @@
  collate  French_France.1252          
  ctype    French_France.1252          
  tz       Europe/Paris                
- date     2020-05-25                  
+ date     2020-05-26                  
 
 - Packages ------------------------------------------------------------------------
  package      * version   date       lib source        
@@ -43,6 +43,7 @@
  diveRsity    * 1.9.90    2017-04-04 [1] CRAN (R 3.6.3)
  dplyr          0.8.5     2020-03-07 [1] CRAN (R 3.6.3)
  e1071          1.7-3     2019-11-26 [1] CRAN (R 3.6.3)
+ elevatr      * 0.2.0     2018-11-28 [1] CRAN (R 3.6.3)
  ellipsis       0.3.1     2020-05-15 [1] CRAN (R 3.6.3)
  expm           0.999-4   2019-03-21 [1] CRAN (R 3.6.1)
  fansi          0.4.1     2020-01-08 [1] CRAN (R 3.6.3)
@@ -71,6 +72,7 @@
  httpuv         1.5.2     2019-09-11 [1] CRAN (R 3.6.1)
  huge           1.3.4.1   2020-04-01 [1] CRAN (R 3.6.3)
  igraph         1.2.5     2020-03-19 [1] CRAN (R 3.6.3)
+ isoband        0.2.1     2020-04-12 [1] CRAN (R 3.6.3)
  jpeg           0.1-8.1   2019-10-24 [1] CRAN (R 3.6.1)
  KernSmooth     2.23-15   2015-06-29 [2] CRAN (R 3.6.1)
  knitr        * 1.28      2020-02-06 [1] CRAN (R 3.6.3)
@@ -137,6 +139,7 @@
  stringi        1.4.6     2020-02-17 [1] CRAN (R 3.6.2)
  stringr        1.4.0     2019-02-10 [1] CRAN (R 3.6.1)
  survival       3.1-12    2020-04-10 [1] CRAN (R 3.6.3)
+ tanaka       * 0.1.3     2020-04-14 [1] CRAN (R 3.6.3)
  tibble         3.0.1     2020-04-20 [1] CRAN (R 3.6.3)
  tidyselect     1.1.0     2020-05-11 [1] CRAN (R 3.6.3)
  units          0.6-6     2020-03-16 [1] CRAN (R 3.6.3)
