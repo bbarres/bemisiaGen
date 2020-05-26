@@ -19,8 +19,8 @@ load("data/shapefiles/ReuIso.RData")
 #Map plotting####
 ##############################################################################/
 
+#op<-par(mfrow=c(1,2))
 #example of map with isopleth
-op<-par(mfrow=c(1,2))
 plot(ReuDep$geometry,col=brewer.pal(11,"Spectral")[6],lwd=3)
 plot(ReuUrb,col=brewer.pal(9,"RdPu")[3],
      border=brewer.pal(9,"RdPu")[3],add=TRUE)
@@ -62,8 +62,8 @@ plot(ReuAgri,
      add=TRUE)
 plot(ReuDep$geometry,col="transparent",lwd=4,add=TRUE)
 #export to .pdf 20 x 18 inches
-par(op)
 
+#par(op)
 #for both map side by side, export to .pdf 40 x 18 inches
 
 
