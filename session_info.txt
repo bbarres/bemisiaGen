@@ -8,7 +8,7 @@
  collate  French_France.1252          
  ctype    French_France.1252          
  tz       Europe/Paris                
- date     2020-05-26                  
+ date     2020-05-27                  
 
 - Packages ------------------------------------------------------------------------
  package      * version   date       lib source        
@@ -16,7 +16,7 @@
  acepack        1.4.1     2016-10-29 [1] CRAN (R 3.6.1)
  ade4         * 1.7-15    2020-02-13 [1] CRAN (R 3.6.3)
  adegenet     * 2.1.3     2020-05-10 [1] CRAN (R 3.6.3)
- ape            5.3       2019-03-17 [1] CRAN (R 3.6.1)
+ ape          * 5.3       2019-03-17 [1] CRAN (R 3.6.1)
  assertthat     0.2.1     2019-03-21 [1] CRAN (R 3.6.1)
  backports      1.1.7     2020-05-13 [1] CRAN (R 3.6.3)
  base64enc      0.1-3     2015-07-28 [1] CRAN (R 3.6.0)
@@ -96,7 +96,7 @@
  nnet           7.3-12    2016-02-02 [2] CRAN (R 3.6.1)
  pbapply        1.4-2     2019-08-31 [1] CRAN (R 3.6.1)
  pbivnorm       0.6.0     2015-01-23 [1] CRAN (R 3.6.0)
- pegas          0.13      2020-03-10 [1] CRAN (R 3.6.3)
+ pegas        * 0.13      2020-03-10 [1] CRAN (R 3.6.3)
  permute        0.9-5     2019-03-12 [1] CRAN (R 3.6.1)
  phangorn       2.5.5     2019-06-19 [1] CRAN (R 3.6.3)
  pillar         1.4.4     2020-05-05 [1] CRAN (R 3.6.3)

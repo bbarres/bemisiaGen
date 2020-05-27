@@ -55,12 +55,14 @@ wc(genind2hierfstat(MedAde))
 pairwise.WCfst(genind2hierfstat(MedAde))
 Meddivtab<-poppr(MedAde)[-4,c(1:3)]
 Meddivtab<-data.frame(Meddivtab,
-                       "Ho"=unlist(lapply(seppop(MedAde),
+                      "Missing"=unlist(lapply(seppop(MedAde),
+                        function(e) summary(e)$NA.perc)),
+                      "Ho"=unlist(lapply(seppop(MedAde),
                         function(e) mean(summary(e)$Hobs,na.rm=TRUE))),
-                       "He"=Hs(MedAde),
-                       "Na"=summary(MedAde)$pop.n.all,
-                       "Ar"=colMeans(allelic.richness(MedAde)$Ar),
-                       "species"="MED")
+                      "He"=Hs(MedAde),
+                      "Na"=summary(MedAde)$pop.n.all,
+                      "Ar"=colMeans(allelic.richness(MedAde)$Ar),
+                      "species"="MED")
 
 #finding the location with several populations (ie several environments)
 sevenvir<-names(rowSums(
@@ -116,6 +118,8 @@ wc(genind2hierfstat(MeaMAde))
 pairwise.WCfst(genind2hierfstat(MeaMAde))
 MeaMdivtab<-poppr(MeaMAde)[-35,c(1:3)]
 MeaMdivtab<-data.frame(MeaMdivtab,
+                       "Missing"=unlist(lapply(seppop(MeaMAde),
+                        function(e) summary(e)$NA.perc)),
                        "Ho"=unlist(lapply(seppop(MeaMAde),
                         function(e) mean(summary(e)$Hobs,na.rm=TRUE))),
                        "He"=Hs(MeaMAde),
@@ -177,12 +181,14 @@ wc(genind2hierfstat(IoAde))
 pairwise.WCfst(genind2hierfstat(IoAde))
 Iodivtab<-poppr(IoAde)[-22,c(1:3)]
 Iodivtab<-data.frame(Iodivtab,
-                       "Ho"=unlist(lapply(seppop(IoAde),
-                        function(e) mean(summary(e)$Hobs,na.rm=TRUE))),
-                       "He"=Hs(IoAde),
-                       "Na"=summary(IoAde)$pop.n.all,
-                       "Ar"=colMeans(allelic.richness(IoAde)$Ar),
-                       "species"="IO")
+                     "Missing"=unlist(lapply(seppop(IoAde),
+                      function(e) summary(e)$NA.perc)),
+                     "Ho"=unlist(lapply(seppop(IoAde),
+                      function(e) mean(summary(e)$Hobs,na.rm=TRUE))),
+                     "He"=Hs(IoAde),
+                     "Na"=summary(IoAde)$pop.n.all,
+                     "Ar"=colMeans(allelic.richness(IoAde)$Ar),
+                     "species"="IO")
 
 #finding the location with several populations (ie several environments)
 sevenvir<-names(rowSums(
