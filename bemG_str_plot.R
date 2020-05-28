@@ -27,7 +27,7 @@ for (i in 1:50){
 }
 title(main="K=2",cex.main=2.5,outer=TRUE)
 par(op)
-#export pdf 25 x 12
+#export pdf 3 x 12
 
 #for K=3
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
@@ -40,7 +40,7 @@ for (i in 1:50){
 }
 title(main="K=3",cex.main=2.5,outer=TRUE)
 par(op)
-#export pdf 25 x 12
+#export pdf 3 x 12
 
 #for K=4
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
@@ -53,7 +53,7 @@ for (i in 1:50){
 }
 title(main="K=4",cex.main=2.5,outer=TRUE)
 par(op)
-#export pdf 25 x 12
+#export pdf 3 x 12
 
 
 ##############################################################################/
@@ -82,7 +82,7 @@ for (i in 1:50){
 }
 title(main="K=2",cex.main=2.5,outer=TRUE)
 par(op)
-#export pdf 25 x 12
+#export pdf 84 x 12
 
 #for K=3
 op<-par(mfrow=c(50,1),mar=c(0,0,0,0),oma=c(1,0,3,0))
@@ -95,7 +95,7 @@ for (i in 1:50){
 }
 title(main="K=3",cex.main=2.5,outer=TRUE)
 par(op)
-#export pdf 25 x 12
+#export pdf 84 x 12
 
 
 ##############################################################################/
