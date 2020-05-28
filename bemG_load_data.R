@@ -26,10 +26,14 @@ source("bemG_strplot_fun.R")
 
 
 ##############################################################################/
-#Loading the population genetic data####
+#Loading "classical" data tables####
 ##############################################################################/
 
+#microsatellite markers data table
 bemipop<-read.table("data/bem_genepop.txt",header=TRUE,sep="\t")
+
+#diversity indices data table
+bemidiv<-read.table("data/bem_diversiSpec.txt",header=TRUE,sep="\t")
 
 
 ##############################################################################/
