@@ -20,6 +20,7 @@ library(classInt)
 library(sf)
 library(elevatr)
 library(tanaka)
+library(vegan)
 
 #loading the functions
 source("bemG_strplot_fun.R")
