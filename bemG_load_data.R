@@ -21,6 +21,8 @@ library(sf)
 library(elevatr)
 library(tanaka)
 library(vegan)
+library(spatstat)
+library(spatgraphs)
 
 #loading the functions
 source("bemG_strplot_fun.R")

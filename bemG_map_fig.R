@@ -116,11 +116,13 @@ popIo<-st_as_sf(x=popIoAde@other$latlong,
                 coords=c("longitude","latitude"),
                 crs=4326)
 popIo<-st_transform(popIo,2975)
+#adding a small amount of jitter so there are no overlapping point
+popIo<-st_jitter(popIo,amount=1)
 #matrix of the projected coordinates
 coorMat<-st_coordinates(popIo)
 row.names(coorMat)<-row.names(popIoAde@other$latlong)
 #euclidean distances matrix, in kms
-IOmat<-vegdist(coorMat,method="euclidean")/1000+0.00001
+IOmat<-vegdist(coorMat,method="euclidean")/1000
 #computing the minimum spanning tree
 treeIo<-spantree(IOmat)
 #distance through the minimum spanning tree
@@ -155,15 +157,31 @@ popMeam<-st_as_sf(x=popMeaMAde@other$latlong,
                 coords=c("longitude","latitude"),
                 crs=4326)
 popMeam<-st_transform(popMeam,2975)
+#adding a small amount of jitter so there are no overlapping point
+popMeam<-st_jitter(popMeam,amount=1)
+#same data but under the 'ppp' format
+PPPpopMeam<-as(as(popMeam,"Spatial"),"ppp")
+
 #matrix of the projected coordinates
 coorMat<-st_coordinates(popMeam)
 row.names(coorMat)<-row.names(popMeaMAde@other$latlong)
 #euclidean distances matrix, in kms
-MEAMmat<-vegdist(coorMat,method="euclidean")/1000+0.00001
+MEAMmat<-vegdist(coorMat,method="euclidean")/1000
 #computing the minimum spanning tree
 treeMeam<-spantree(MEAMmat)
 #distance through the minimum spanning tree
 cophMEAMmat<-cophenetic(treeMeam)
+
+temp2<-delaunay(PPPpopMeam)
+plot(temp2,col="red",lwd=1,lty=2,add=TRUE)
+
+temp2<-spatgraph(PPPpopMeam,"gabriel")
+plot(temp2,as.data.frame(PPPpopMeam),add=TRUE)
+temp2<-spatgraph(PPPpopMeam,"RNG")
+plot(temp2,as.data.frame(PPPpopMeam),col="red",lwd=3,add=TRUE)
+temp2<-spatgraph(PPPpopMeam,"knn",par=5)
+plot(temp2,as.data.frame(PPPpopMeam),col="red",lwd=3,add=TRUE)
+
 #correlation between euclidean and cophenetic distances
 plot(cophMEAMmat~MEAMmat)
 #export the data matrices
