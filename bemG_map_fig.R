@@ -107,7 +107,7 @@ plot(ReuDep$geometry,col="transparent",lwd=4,add=TRUE)
 
 
 ##############################################################################/
-#Map with the minimum spanning tree between sampled populations####
+#IO distance matrices for Isolation by distance testing####
 ##############################################################################/
 
 #creating the IO spatial object
@@ -118,6 +118,9 @@ popIo<-st_as_sf(x=popIoAde@other$latlong,
 popIo<-st_transform(popIo,2975)
 #adding a small amount of jitter so there are no overlapping point
 popIo<-st_jitter(popIo,amount=1)
+#same data but under the 'ppp' format
+PPPpopIo<-as(as(popIo,"Spatial"),"ppp")
+
 #matrix of the projected coordinates
 coorMat<-st_coordinates(popIo)
 row.names(coorMat)<-row.names(popIoAde@other$latlong)
@@ -137,6 +140,7 @@ cophIOmat<-as.matrix(cophIOmat)
 cophIOmat[upper.tri(cophIOmat,diag=TRUE)]<-""
 write.table(cophIOmat,file="output/cophIOmat.txt",sep="\t",quote=FALSE)
 
+#map with an additionnal layer for the minimum spanning network
 plot(ReuDep$geometry,col=brewer.pal(11,"Spectral")[6],lwd=3)
 plot(ReuUrb,col=brewer.pal(9,"RdPu")[3],
      border=brewer.pal(9,"RdPu")[3],add=TRUE)
@@ -150,6 +154,10 @@ plot(ReuDep$geometry,col="transparent",lwd=4,add=TRUE)
 lines(treeIo,st_coordinates(popIo),lwd=3,col=grey(0.4))
 plot(popIo,col="red",pch=19,add=TRUE)
 
+
+##############################################################################/
+#MEAM distance matrices for Isolation by distance testing####
+##############################################################################/
 
 #creating the MEAM spatial object
 popMeam<-st_as_sf(x=popMeaMAde@other$latlong,
@@ -171,7 +179,20 @@ MEAMmat<-vegdist(coorMat,method="euclidean")/1000
 treeMeam<-spantree(MEAMmat)
 #distance through the minimum spanning tree
 cophMEAMmat<-cophenetic(treeMeam)
+#correlation between euclidean and cophenetic distances
+plot(cophMEAMmat~MEAMmat)
+#export the data matrices
+MEAMmat<-as.matrix(MEAMmat)
+MEAMmat[upper.tri(MEAMmat,diag=TRUE)]<-""
+#exporting the distance matrix
+write.table(MEAMmat,file="output/MEAMmat.txt",sep="\t",quote=FALSE)
+cophMEAMmat<-as.matrix(cophMEAMmat)
+cophMEAMmat[upper.tri(cophMEAMmat,diag=TRUE)]<-""
+#exporting the cophenetic distance matrix
+write.table(cophMEAMmat,file="output/cophMEAMmat.txt",sep="\t",quote=FALSE)
 
+
+#######additional codes for other type of networks
 temp2<-delaunay(PPPpopMeam)
 plot(temp2,col="red",lwd=1,lty=2,add=TRUE)
 
@@ -181,17 +202,15 @@ temp2<-spatgraph(PPPpopMeam,"RNG")
 plot(temp2,as.data.frame(PPPpopMeam),col="red",lwd=3,add=TRUE)
 temp2<-spatgraph(PPPpopMeam,"knn",par=5)
 plot(temp2,as.data.frame(PPPpopMeam),col="red",lwd=3,add=TRUE)
+temp2<-spatgraph(PPPpopMeam,"geometric",par=200)
+plot(temp2,as.data.frame(PPPpopMeam),col="red",lwd=3,add=TRUE)
 
-#correlation between euclidean and cophenetic distances
-plot(cophMEAMmat~MEAMmat)
-#export the data matrices
-MEAMmat<-as.matrix(MEAMmat)
-MEAMmat[upper.tri(MEAMmat,diag=TRUE)]<-""
-write.table(MEAMmat,file="output/MEAMmat.txt",sep="\t",quote=FALSE)
-cophMEAMmat<-as.matrix(cophMEAMmat)
-cophMEAMmat[upper.tri(cophMEAMmat,diag=TRUE)]<-""
-write.table(cophMEAMmat,file="output/cophMEAMmat.txt",sep="\t",quote=FALSE)
+#shortest path in a network (from package igraph)
+shortest_paths(temp2)
 
+
+
+#map with an additionnal layer for the minimum spanning network
 plot(ReuDep$geometry,col=brewer.pal(11,"Spectral")[6],lwd=3)
 plot(ReuUrb,col=brewer.pal(9,"RdPu")[3],
      border=brewer.pal(9,"RdPu")[3],add=TRUE)
@@ -202,8 +221,10 @@ plot(ReuAgri,col=brewer.pal(8,"Accent")[1],
 plot(st_geometry(ReuIso),col=grey(15:1/15,alpha=0.3),
      axes=FALSE,legend=FALSE,add=TRUE,lwd=1)
 plot(ReuDep$geometry,col="transparent",lwd=4,add=TRUE)
-lines(treeMeam,st_coordinates(popMeam),lwd=3,col="violet")
-plot(popMeam,col="blue",pch=19,add=TRUE)
+lines(treeMeam,st_coordinates(popMeam),lwd=5,
+      col=brewer.pal(9,"Purples")[8])
+plot(popMeam,col="darkblue",pch=19,cex=6,add=TRUE)
+#export to .pdf 20 x 18 inches
 
 
 ##############################################################################/
