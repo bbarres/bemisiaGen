@@ -48,7 +48,8 @@ dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=7,n.pca=7)
 
 
 colove<-brewer.pal(8,"Dark2")[c(1,2,3,4)]
-colove2<-brewer.pal(8,"Dark2")[c(5,6,7,8)]
+colove2<-brewer.pal(8,"Set1")[c(1,2,3,4)]
+colove3<-brewer.pal(8,"Set2")[c(1,2,3)]
 
 #STRUCTURE-like graphic
 compoplot(dapcbemAde,lab=NA)
@@ -62,6 +63,11 @@ scatter(dapcbemAde,xax=1,yax=2,posi.da="topright",col=colove2,
         scree.pca=FALSE,scree.da=FALSE,cex=2.5,cstar=1,solid=0.6,
         cellipse=1.5,axesell=TRUE,pch=20,
         grp=bemAde@other$species)
+#same thing but instead of dapc group, we use the kdr genotype
+scatter(dapcbemAde,xax=1,yax=2,posi.da="topright",col=colove3,
+        scree.pca=FALSE,scree.da=FALSE,cex=2.5,cstar=1,solid=0.6,
+        cellipse=1.5,axesell=TRUE,pch=20,
+        grp=bemAde@other$kdr)
 
 #same thing but instead of dapc group, we use sampling environment
 scatter(dapcbemAde,xax=1,yax=2,grp=bemAde@strata$environment,
