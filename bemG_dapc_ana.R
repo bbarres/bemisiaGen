@@ -54,6 +54,7 @@ colove3<-brewer.pal(8,"Set2")[c(1,2,3)]
 #STRUCTURE-like graphic
 compoplot(dapcbemAde,lab=NA)
 
+op<-par(mfrow=c(2,2))
 #the scatter plot
 scatter(dapcbemAde,xax=1,yax=2,posi.da="topright",col=colove,
         scree.pca=FALSE,scree.da=FALSE,cex=2.5,cstar=1,solid=0.6,
@@ -68,6 +69,10 @@ scatter(dapcbemAde,xax=1,yax=2,posi.da="topright",col=colove3,
         scree.pca=FALSE,scree.da=FALSE,cex=2.5,cstar=1,solid=0.6,
         cellipse=1.5,axesell=TRUE,pch=20,
         grp=bemAde@other$kdr)
+par(op)
+
+#expor to .pdf 10 x 10
+
 
 #same thing but instead of dapc group, we use sampling environment
 scatter(dapcbemAde,xax=1,yax=2,grp=bemAde@strata$environment,
