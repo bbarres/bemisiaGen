@@ -73,6 +73,15 @@ par(op)
 
 #expor to .pdf 10 x 10
 
+#the graph use for the article
+clustbemAde<-find.clusters(bemAde,n.pca=40,max.n.clust=35) #pick 7 clusters
+dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=20)
+#a scatter plot but instead of using dapc group for grp, we use the species
+scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove2,
+        scree.pca=TRUE,scree.da=TRUE,cex=2.5,cstar=1,solid=0.6,
+        cellipse=1.5,axesell=TRUE,pch=20,
+        grp=bemAde@other$species)
+
 
 #same thing but instead of dapc group, we use sampling environment
 scatter(dapcbemAde,xax=1,yax=2,grp=bemAde@strata$environment,
