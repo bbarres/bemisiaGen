@@ -82,6 +82,8 @@ scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove2,
         cellipse=1.5,axesell=TRUE,pch=20,
         grp=bemAde@other$species)
 
+#expor to .pdf 6 x 6
+
 
 #same thing but instead of dapc group, we use sampling environment
 scatter(dapcbemAde,xax=1,yax=2,grp=bemAde@strata$environment,
