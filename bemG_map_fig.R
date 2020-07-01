@@ -29,7 +29,7 @@ bemAde@other$species<-bemipop[,c(2)]
 hier(bemAde)<- ~pop_geo/environment
 
 #MED populations
-MedAde<-bemAde[bemAde@other$species=="MED-Q1"]
+MedAde<-bemAde[bemAde@other$species=="MED-Q"]
 #we remove population with less than 4 individuals
 MedAde<-MedAde[MedAde$pop %in% 
                names(summary(MedAde)$n.by.pop)[summary(MedAde)$n.by.pop>4]]

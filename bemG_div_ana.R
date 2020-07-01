@@ -32,7 +32,7 @@ alleles(bemAde)
 #Analysis of the MED species####
 ##############################################################################/
 
-MedAde<-bemAde[bemAde@other$species=="MED-Q1"]
+MedAde<-bemAde[bemAde@other$species=="MED-Q"]
 #we remove population with less than 4 individuals
 MedAde<-MedAde[MedAde$pop %in% 
                  names(summary(MedAde)$n.by.pop)[summary(MedAde)$n.by.pop>4]]
@@ -62,7 +62,7 @@ Meddivtab<-data.frame(Meddivtab,
                       "He"=Hs(MedAde),
                       "Na"=summary(MedAde)$pop.n.all,
                       "Ar"=colMeans(allelic.richness(MedAde)$Ar),
-                      "species"="MED")
+                      "species"="MED-Q")
 
 #finding the location with several populations (ie several environments)
 sevenvir<-names(rowSums(
