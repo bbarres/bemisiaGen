@@ -38,6 +38,9 @@ bemipop<-read.table("data/bem_genepop.txt",header=TRUE,sep="\t")
 #diversity indices data table
 bemidiv<-read.table("data/bem_diversiSpec.txt",header=TRUE,sep="\t")
 
+#pairwise Fst between populations
+bemPairFst<-read.table("data/bem_pairWiseFST.txt",header=TRUE,sep="\t")
+
 
 ##############################################################################/
 #Bemisia Q: plot a list of 100 STRUCTURE output files for each K####
