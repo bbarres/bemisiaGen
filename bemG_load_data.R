@@ -6,6 +6,7 @@
 
 #loading the  necessary libraries
 library(adegenet)
+library(data.table)
 library(gdata)
 library(RColorBrewer)
 library(diveRsity)
@@ -23,6 +24,7 @@ library(tanaka)
 library(vegan)
 library(spatstat)
 library(spatgraphs)
+library(tidyr)
 
 #loading the functions
 source("bemG_strplot_fun.R")
