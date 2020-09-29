@@ -102,30 +102,44 @@ par(op)
 #Bemisia BMS: final plot for the combine runs####
 ##############################################################################/
 
-
+#preparing the dataset
 temp<-bemipop[bemipop$species!="MED-Q",]
 temp<-as.data.table(temp)
 setorder(temp,pop_geo,pop_geo_env,-species)
 head(temp)
 
-coloor<-c("chartreuse4","firebrick")
+coloor<-brewer.pal(8,"Dark2")[1:2]
 poptiquet<-names(table(temp$pop_geo))
 effpop<-as.numeric(table(temp$pop_geo))
-structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
-           coloor,effpop,poptiquet,spacepop=5,
-           mef=c(0,0,0,0,0),colbord=NA)
 
 temp2<-as.data.frame(table(temp$pop_geo_env,temp$pop_geo))
 temp2<-temp2[temp2$Freq!=0,]
 temp2$cumu<-cumsum(temp2$Freq)
 temp2$Var2b<-temp2$Var2[c(1,1:(length(temp2$Var2)-1))]
-temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,5))[c(2:length(temp2$Var2),1)]
-temp2$cumuD<-temp2$cumu+temp2$decal
-rect(c(0,temp2$cumuD)[1:(length(temp2$cumuD)-1)],
-     rep(0,length(temp2$cumuD)-1),
-     temp2$cumuD[1:(length(temp2$cumuD)-1)],
-     rep(1,length(temp2$cumuD)-1),
+temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,5))
+temp3<-as.data.table(table(temp$pop_geo_env,temp$environment))
+temp3<-temp3[temp3$N!=0,]
+temp2<-merge(temp2,temp3,by.x="Var1",by.y="V1",sort=FALSE)
+
+#plotting
+structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
+           coloor,effpop,poptiquet,spacepop=5,
+           mef=c(0,0,1,1,0),colbord=NA,angl=0)
+
+rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
+     rep(0,length(temp2$cumu)),
+     temp2$cumu+temp2$decal,
+     rep(1,length(temp2$cumu)),
      lwd=2)
+
+axis(3,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+       (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
+     labels=FALSE,pos=1,lwd.ticks=2,lwd=0)
+
+text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+       (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-6,
+     rep(par("usr")[4]+0.020,length(temp2$cumu)),labels=temp2$V2,
+     srt=25,xpd=NA,pos=4,cex=0.7)
 
 
 ##############################################################################/
