@@ -99,7 +99,7 @@ par(op)
 
 
 ##############################################################################/
-#Bemisia BMS: final plot for the combine runs####
+#Bemisia BMS: final plot for the combine runs by pop geo + geo enviro####
 ##############################################################################/
 
 #preparing the dataset
@@ -109,7 +109,7 @@ setorder(temp,pop_geo,pop_geo_env,-species)
 head(temp)
 
 #color based on ppt
-coloor<-c("#217821","#80e5ff","#ff2a2a","#8d5fd3")
+coloor<-c("#217821","#80e5ff","#ff2a2a","#8d5fd3","#00aad4")
 #other set of colors
 coloor<-brewer.pal(8,"Dark2")[1:2]
 poptiquet<-names(table(temp$pop_geo))
@@ -125,6 +125,7 @@ temp3<-temp3[temp3$N!=0,]
 temp2<-merge(temp2,temp3,by.x="Var1",by.y="V1",sort=FALSE)
 
 #plotting pop = geographic pop, subpop = environment within pop
+op<-par(mar=c(3,0.1,4,0.1),oma=c(0,0,0,0))
 structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=5,
            mef=c(0,0,1,1,0),colbord=NA,angl=0)
@@ -143,6 +144,56 @@ text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
        (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-6,
      rep(par("usr")[4]+0.020,length(temp2$cumu)),labels=temp2$V2,
      srt=25,xpd=NA,pos=4,cex=0.7)
+par(op)
+
+
+##############################################################################/
+#Bemisia BMS: final plot for the combine runs by environment####
+##############################################################################/
+
+#preparing the dataset
+temp<-bemipop[bemipop$species!="MED-Q",]
+temp<-as.data.table(temp)
+setorder(temp,environment,pop_geo,-species)
+head(temp)
+
+#color based on ppt
+coloor<-c("#217821","#80e5ff","#ff2a2a","#8d5fd3","#00aad4")
+#other set of colors
+coloor<-brewer.pal(8,"Dark2")[1:2]
+poptiquet<-names(table(temp$environment))
+effpop<-as.numeric(table(temp$environment))
+
+temp2<-as.data.frame(table(temp$pop_geo,temp$environment))
+temp2<-temp2[temp2$Freq!=0,]
+temp2$cumu<-cumsum(temp2$Freq)
+temp2$Var2b<-temp2$Var2[c(1,1:(length(temp2$Var2)-1))]
+temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,5))
+temp3<-as.data.table(table(temp$pop_geo_env,temp$environment))
+temp3<-temp3[temp3$N!=0,]
+temp2<-merge(temp2,temp3,by.x="Var1",by.y="V1",sort=FALSE)
+
+#plotting pop = geographic pop, subpop = environment within pop
+op<-par(mar=c(3,0.1,4,0.1),oma=c(0,0,0,0))
+structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
+           coloor,effpop,poptiquet,spacepop=5,
+           mef=c(0,0,1,1,0),colbord=NA,angl=0)
+
+rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
+     rep(0,length(temp2$cumu)),
+     temp2$cumu+temp2$decal,
+     rep(1,length(temp2$cumu)),
+     lwd=2)
+
+axis(3,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+       (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
+     labels=FALSE,pos=1,lwd.ticks=2,lwd=0)
+
+text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+       (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-6,
+     rep(par("usr")[4]+0.020,length(temp2$cumu)),labels=temp2$Var1,
+     srt=25,xpd=NA,pos=4,cex=0.7)
+par(op)
 
 
 ##############################################################################/
