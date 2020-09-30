@@ -108,6 +108,9 @@ temp<-as.data.table(temp)
 setorder(temp,pop_geo,pop_geo_env,-species)
 head(temp)
 
+#color based on ppt
+coloor<-c("#217821","#80e5ff","#ff2a2a","#8d5fd3")
+#other set of colors
 coloor<-brewer.pal(8,"Dark2")[1:2]
 poptiquet<-names(table(temp$pop_geo))
 effpop<-as.numeric(table(temp$pop_geo))
@@ -121,7 +124,7 @@ temp3<-as.data.table(table(temp$pop_geo_env,temp$environment))
 temp3<-temp3[temp3$N!=0,]
 temp2<-merge(temp2,temp3,by.x="Var1",by.y="V1",sort=FALSE)
 
-#plotting
+#plotting pop = geographic pop, subpop = environment within pop
 structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=5,
            mef=c(0,0,1,1,0),colbord=NA,angl=0)
