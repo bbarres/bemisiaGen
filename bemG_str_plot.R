@@ -105,6 +105,23 @@ par(op)
 #preparing the dataset
 temp<-bemipop[bemipop$species!="MED-Q",]
 temp<-as.data.table(temp)
+temp$species2=temp$species
+temp<-spread(temp,species2,species2)
+temp$Hybride<-as.character(temp$Hybride)
+temp$Hybride<-ifelse(is.na(temp$Hybride),0,1)
+temp$MEAM1<-as.character(temp$MEAM1)
+temp$MEAM1<-ifelse(is.na(temp$MEAM1),0,1)
+temp$IO<-as.character(temp$IO)
+temp$IO<-ifelse(is.na(temp$IO),0,1)
+#preparing data mut L925I
+temp$mut_L925I<-as.character(temp$mut_L925I)
+temp$mut_L925I[is.na(temp$mut_L925I)]<-"miss"
+temp<-spread(temp,mut_L925I,mut_L925I)
+temp$`I925/I925`<-ifelse(is.na(temp$`I925/I925`),0,1)
+temp$`L925/I925`<-ifelse(is.na(temp$`L925/I925`),0,1)
+temp$`L925/L925`<-ifelse(is.na(temp$`L925/L925`),0,1)
+temp$miss<-ifelse(is.na(temp$miss),0,1)
+#reordering the dataset
 setorder(temp,pop_geo,pop_geo_env,-species)
 head(temp)
 
@@ -169,11 +186,13 @@ temp2<-temp2[temp2$Freq!=0,]
 temp2$cumu<-cumsum(temp2$Freq)
 temp2$Var2b<-temp2$Var2[c(1,1:(length(temp2$Var2)-1))]
 temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,5))
-temp3<-as.data.table(table(temp$pop_geo_env,temp$environment))
+temp2$id1<-paste(temp2$Var1,temp2$Var2)
+temp3<-as.data.table(table(temp$pop_geo,temp$environment))
 temp3<-temp3[temp3$N!=0,]
-temp2<-merge(temp2,temp3,by.x="Var1",by.y="V1",sort=FALSE)
+temp3$id2<-paste(temp3$V1,temp3$V2)
+temp2<-merge(temp2,temp3,by.x="id1",by.y="id2",sort=FALSE)
 
-#plotting pop = geographic pop, subpop = environment within pop
+#plotting pop = environment, subpop = geographic pop
 op<-par(mar=c(3,0.1,4,0.1),oma=c(0,0,0,0))
 structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=5,
