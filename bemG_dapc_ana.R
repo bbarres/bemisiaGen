@@ -19,6 +19,8 @@ bemAde<-df2genind(bemipop[,c(12:22)],ploidy=2,ncode=3,NA.char="0",
                   strata=bemipop[,c(3,4,8,9)])
 bemAde@other$latlong<-bemipop[,c(6,7)]
 bemAde@other$species<-bemipop[,c(2)]
+bemAde@other$species<-factor(bemAde@other$species,levels=c("MEAM1","IO",
+                                                           "Hybride","MED-Q"))
 bemAde@other$kdr<-bemipop[,c(23)]
 hier(bemAde)<- ~pop_geo/environment
 
@@ -50,6 +52,15 @@ dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=7,n.pca=7)
 colove<-brewer.pal(8,"Dark2")[c(1,2,3,4)]
 colove2<-brewer.pal(8,"Set1")[c(1,2,3,4)]
 colove3<-brewer.pal(8,"Set2")[c(1,2,3)]
+colove4<-c(rgb(col2rgb(colove2)[1,1],col2rgb(colove2)[2,1],
+               col2rgb(colove2)[3,1],alpha=0.1,max=255),
+           rgb(col2rgb(colove2)[1,2],col2rgb(colove2)[2,2],
+               col2rgb(colove2)[3,2],alpha=0.1,max=255),
+           rgb(col2rgb(colove2)[1,3],col2rgb(colove2)[2,3],
+               col2rgb(colove2)[3,3],alpha=0.1,max=255),
+           rgb(col2rgb(colove2)[1,4],col2rgb(colove2)[2,4],
+               col2rgb(colove2)[3,4],alpha=0.1,max=255))
+colove5<-c("#abdda4","#2b83ba","#d7191c","#c2a5cf")
 
 #STRUCTURE-like graphic
 compoplot(dapcbemAde,lab=NA)
@@ -77,9 +88,9 @@ par(op)
 clustbemAde<-find.clusters(bemAde,n.pca=40,max.n.clust=35) #pick 7 clusters
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=20)
 #a scatter plot but instead of using dapc group for grp, we use the species
-scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove2,
-        scree.pca=TRUE,scree.da=TRUE,cex=2.5,cstar=1,solid=0.6,
-        cellipse=1.5,axesell=TRUE,pch=20,
+scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove5,
+        scree.pca=TRUE,scree.da=TRUE,cex=1.5,cstar=1,solid=1,
+        cellipse=1.5,axesell=TRUE,pch=c(1,2,16,15),
         grp=bemAde@other$species)
 
 #expor to .pdf 6 x 6
