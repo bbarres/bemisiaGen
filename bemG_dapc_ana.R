@@ -12,16 +12,15 @@ source("bemG_load_data.R")
 #preparing the dataset for DAPC analyses####
 ##############################################################################/
 
-bemAde<-df2genind(bemipop[,c(12:22)],ploidy=2,ncode=3,NA.char="0",
-                  ind.names=bemipop$whitefly_ID,
-                  loc.names=colnames(bemipop)[12:22],
-                  pop=bemipop$pop_geo_env,
-                  strata=bemipop[,c(3,4,8,9)])
-bemAde@other$latlong<-bemipop[,c(6,7)]
-bemAde@other$species<-bemipop[,c(2)]
-bemAde@other$species<-factor(bemAde@other$species,levels=c("MEAM1","IO",
-                                                           "Hybride","MED-Q"))
-bemAde@other$kdr<-bemipop[,c(23)]
+bemipop2<-bemipop[order(bemipop$species,decreasing=TRUE),]
+bemAde<-df2genind(bemipop2[,c(12:22)],ploidy=2,ncode=3,NA.char="0",
+                  ind.names=bemipop2$whitefly_ID,
+                  loc.names=colnames(bemipop2)[12:22],
+                  pop=bemipop2$pop_geo_env,
+                  strata=bemipop2[,c(3,4,8,9)])
+bemAde@other$latlong<-bemipop2[,c(6,7)]
+bemAde@other$species<-bemipop2[,c(2)]
+bemAde@other$kdr<-bemipop2[,c(23)]
 hier(bemAde)<- ~pop_geo/environment
 
 
@@ -60,7 +59,7 @@ colove4<-c(rgb(col2rgb(colove2)[1,1],col2rgb(colove2)[2,1],
                col2rgb(colove2)[3,3],alpha=0.1,max=255),
            rgb(col2rgb(colove2)[1,4],col2rgb(colove2)[2,4],
                col2rgb(colove2)[3,4],alpha=0.1,max=255))
-colove5<-c("#abdda4","#2b83ba","#d7191c","#c2a5cf")
+colove5<-c("#d7191c","#2b83ba","#abdda4","#c2a5cf")
 
 #STRUCTURE-like graphic
 compoplot(dapcbemAde,lab=NA)
@@ -84,16 +83,16 @@ par(op)
 
 #expor to .pdf 10 x 10
 
+
 #the graph use for the article
 clustbemAde<-find.clusters(bemAde,n.pca=40,max.n.clust=35) #pick 7 clusters
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=20)
 #a scatter plot but instead of using dapc group for grp, we use the species
 scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove5,
         scree.pca=TRUE,scree.da=TRUE,cex=1.5,cstar=1,solid=1,
-        cellipse=1.5,axesell=TRUE,pch=c(1,2,16,15),
+        cellipse=1.5,axesell=TRUE,pch=c(15,1,2,18),
         grp=bemAde@other$species)
-
-#expor to .pdf 6 x 6
+#expor to .pdf 7 x 7
 
 
 #same thing but instead of dapc group, we use sampling environment
