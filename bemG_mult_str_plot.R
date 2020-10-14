@@ -323,8 +323,13 @@ temp$`V929/V929`<-ifelse(is.na(temp$`V929/V929`),0,1)
 temp$`T929/V929`<-ifelse(is.na(temp$`T929/V929`),0,1)
 temp$`T929/T929`<-ifelse(is.na(temp$`T929/T929`),0,1)
 temp$miss2<-ifelse(is.na(temp$miss2),0,1)
+#creating new variable to order the individuals according to the clustering
+temp$clumaj<-c("Med_clust1","Med_clust2","Med_clust3")[apply(
+        temp[,c("Med_clust1","Med_clust2","Med_clust3")],
+        1,function(x) which(x==max(x)))]
+temp$cluMax<-apply(temp[,c("Med_clust1","Med_clust2","Med_clust3")],1,max)
 #reordering the dataset
-setorder(temp,environment,pop_geo,-species)
+setorder(temp,environment,pop_geo,-species,clumaj,-cluMax)
 head(temp)
 
 poptiquet<-names(table(temp$environment))
@@ -349,7 +354,7 @@ op<-par(mar=c(0.1,10,0.1,0),oma=c(3,0,5,0))
 structplot(t(temp[,c("Med_clust1","Med_clust2","Med_clust3")]),
            coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
            mef=c(0,0,1,0,0),colbord=NA,angl=0)
-mtext("Genetic\nassignment",side=2,line=-1,cex=1.5,las=1)
+mtext("Genetic\nassignment",side=2,line=-1,cex=1,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
@@ -369,7 +374,7 @@ structplot(t(temp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
            cexpop=1.5,distxax=0.1,
            mef=c(0,0,1,0,0),colbord=NA,angl=0)
-mtext("kdr1\ngenotype",side=2,line=-1,cex=1.5,las=1)
+mtext("kdr1\ngenotype",side=2,line=-1,cex=1,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
@@ -381,8 +386,8 @@ coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(temp[,c("V929/V929","T929/V929","T929/T929","miss")]),
            coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
            cexpop=1.5,distxax=0.1,
-           mef=c(0,0,1,1,0),colbord=NA,angl=0)
-mtext("kdr2\ngenotype",side=2,line=-1,cex=1.5,las=1)
+           mef=c(0,0,1,1,0),colbord=NA,angl=-10)
+mtext("kdr2\ngenotype",side=2,line=-1,cex=1,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
