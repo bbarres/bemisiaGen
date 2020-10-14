@@ -100,7 +100,7 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      lwd=2)
 par(op)
 
-#export to .pdf 40 x 4 inches
+#export to .pdf 4 x 40 inches
 
 
 ##############################################################################/
@@ -197,7 +197,7 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      lwd=2)
 par(op)
 
-#export to .pdf 40 x 4 inches
+#export to .pdf 4 x 40 inches
 
 
 ##############################################################################/
@@ -293,7 +293,119 @@ par(op)
 #export to .pdf 40 x 4 inches
 
 
+##############################################################################/
+#Bemisia MED: final plot for the combine runs by environment####
+##############################################################################/
 
+#preparing the dataset
+temp<-bemipop[bemipop$species=="MED-Q",]
+temp<-as.data.table(temp)
+temp$species2=temp$species
+temp<-spread(temp,species2,species2)
+temp$`MED-Q`<-as.character(temp$`MED-Q`)
+temp$`MED-Q`<-ifelse(is.na(temp$`MED-Q`),0,1)
+#preparing data mut L925I
+temp$mut_L925I<-as.character(temp$mut_L925I)
+temp$mut_L925I[is.na(temp$mut_L925I)]<-"miss"
+temp<-spread(temp,mut_L925I,mut_L925I)
+temp$`I925/I925`<-ifelse(is.na(temp$`I925/I925`),0,1)
+temp$`L925/I925`<-ifelse(is.na(temp$`L925/I925`),0,1)
+temp$`L925/L925`<-ifelse(is.na(temp$`L925/L925`),0,1)
+temp$miss<-ifelse(is.na(temp$miss),0,1)
+#preparing data mut T929V
+temp$mut_T929V<-as.character(temp$mut_T929V)
+temp$mut_T929V[is.na(temp$mut_T929V)]<-"miss2"
+temp<-spread(temp,mut_T929V,mut_T929V)
+temp$`V929/V929`<-ifelse(is.na(temp$`V929/V929`),0,1)
+temp$`T929/V929`<-ifelse(is.na(temp$`T929/V929`),0,1)
+temp$`T929/T929`<-ifelse(is.na(temp$`T929/T929`),0,1)
+temp$miss2<-ifelse(is.na(temp$miss2),0,1)
+#reordering the dataset
+setorder(temp,environment,pop_geo,-species)
+head(temp)
+
+poptiquet<-names(table(temp$environment))
+effpop<-as.numeric(table(temp$environment))
+
+temp2<-as.data.frame(table(temp$pop_geo,temp$environment))
+temp2<-temp2[temp2$Freq!=0,]
+temp2$cumu<-cumsum(temp2$Freq)
+temp2$Var2b<-temp2$Var2[c(1,1:(length(temp2$Var2)-1))]
+temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,1))
+temp2$id1<-paste(temp2$Var1,temp2$Var2)
+temp3<-as.data.table(table(temp$pop_geo,temp$environment))
+temp3<-temp3[temp3$N!=0,]
+temp3$id2<-paste(temp3$V1,temp3$V2)
+temp2<-merge(temp2,temp3,by.x="id1",by.y="id2",sort=FALSE)
+
+layout(matrix(c(1,1,1,2,3),5,1,byrow=TRUE))
+#plotting pop = geographic pop, subpop = environment within pop
+#pick a set of colors
+coloor<-brewer.pal(8,"Dark2")[3:5]
+op<-par(mar=c(0.1,10,0.1,0),oma=c(3,0,5,0))
+structplot(t(temp[,c("Med_clust1","Med_clust2","Med_clust3")]),
+           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
+           mef=c(0,0,1,0,0),colbord=NA,angl=0)
+mtext("Genetic\nassignment",side=2,line=-1,cex=1.5,las=1)
+rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
+     rep(0,length(temp2$cumu)),
+     temp2$cumu+temp2$decal,
+     rep(1,length(temp2$cumu)),
+     lwd=2)
+axis(3,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+       (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
+     labels=FALSE,pos=1,lwd.ticks=2,lwd=0)
+text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+       (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-1,
+     rep(par("usr")[4]+0.050,length(temp2$cumu)),labels=temp2$Var1,
+     srt=45,xpd=NA,pos=4,cex=1.2)
+#plotting pop = geographic pop, subpop = environment within pop
+#pick a set of colors, color based on ppt
+coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+structplot(t(temp[,c("I925/I925","L925/I925","L925/L925","miss")]),
+           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
+           cexpop=1.5,distxax=0.1,
+           mef=c(0,0,1,0,0),colbord=NA,angl=0)
+mtext("kdr1\ngenotype",side=2,line=-1,cex=1.5,las=1)
+rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
+     rep(0,length(temp2$cumu)),
+     temp2$cumu+temp2$decal,
+     rep(1,length(temp2$cumu)),
+     lwd=2)
+#plotting pop = geographic pop, subpop = environment within pop
+#pick a set of colors, color based on ppt
+coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+structplot(t(temp[,c("V929/V929","T929/V929","T929/T929","miss")]),
+           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
+           cexpop=1.5,distxax=0.1,
+           mef=c(0,0,1,1,0),colbord=NA,angl=0)
+mtext("kdr2\ngenotype",side=2,line=-1,cex=1.5,las=1)
+rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
+     rep(0,length(temp2$cumu)),
+     temp2$cumu+temp2$decal,
+     rep(1,length(temp2$cumu)),
+     lwd=2)
+par(op)
+
+#export to .pdf 4 x 7 inches
+
+
+#plotting pop = geographic pop, subpop = environment within pop
+#pick a set of colors, color based on ppt
+coloor<-c("#217821","#8feA8f", #MEAM1
+          "#00aad4","#80e5ff", #IO
+          "#ff2a2a","#ff8080", #Hybride
+          "#8d5fd3","#e5d5ff", #MED-Q
+          "white")
+structplot(t(temp[,c("MED-Q")]),
+           coloor[c(8,9)],effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=5,
+           mef=c(0,0,1,0,0),colbord=NA,angl=0)
+mtext("Species",side=2,line=-10,cex=1.5,las=1)
+rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
+     rep(0,length(temp2$cumu)),
+     temp2$cumu+temp2$decal,
+     rep(1,length(temp2$cumu)),
+     lwd=2)
 
 
 ##############################################################################/
