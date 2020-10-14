@@ -300,6 +300,9 @@ par(op)
 #preparing the dataset
 temp<-bemipop[bemipop$species=="MED-Q",]
 temp<-as.data.table(temp)
+#for the order of the different environment
+temp$environment<-factor(temp$environment,
+                         levels(temp$environment)[c(2,1,3,4)])
 temp$species2=temp$species
 temp<-spread(temp,species2,species2)
 temp$`MED-Q`<-as.character(temp$`MED-Q`)
