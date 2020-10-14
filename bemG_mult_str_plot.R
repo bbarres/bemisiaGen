@@ -339,7 +339,7 @@ temp2<-as.data.frame(table(temp$pop_geo,temp$environment))
 temp2<-temp2[temp2$Freq!=0,]
 temp2$cumu<-cumsum(temp2$Freq)
 temp2$Var2b<-temp2$Var2[c(1,1:(length(temp2$Var2)-1))]
-temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,1))
+temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,2))
 temp2$id1<-paste(temp2$Var1,temp2$Var2)
 temp3<-as.data.table(table(temp$pop_geo,temp$environment))
 temp3<-temp3[temp3$N!=0,]
@@ -350,9 +350,9 @@ layout(matrix(c(1,1,1,2,3),5,1,byrow=TRUE))
 #plotting pop = geographic pop, subpop = environment within pop
 #pick a set of colors
 coloor<-brewer.pal(8,"Dark2")[3:5]
-op<-par(mar=c(0.1,10,0.1,0),oma=c(3,0,5,0))
+op<-par(mar=c(0.1,6,0.1,0),oma=c(3,0,5,0))
 structplot(t(temp[,c("Med_clust1","Med_clust2","Med_clust3")]),
-           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
+           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=2,
            mef=c(0,0,1,0,0),colbord=NA,angl=0)
 mtext("Genetic\nassignment",side=2,line=-1,cex=1,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
@@ -371,7 +371,7 @@ text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
 #pick a set of colors, color based on ppt
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(temp[,c("I925/I925","L925/I925","L925/L925","miss")]),
-           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
+           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=2,
            cexpop=1.5,distxax=0.1,
            mef=c(0,0,1,0,0),colbord=NA,angl=0)
 mtext("kdr1\ngenotype",side=2,line=-1,cex=1,las=1)
@@ -384,7 +384,7 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
 #pick a set of colors, color based on ppt
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(temp[,c("V929/V929","T929/V929","T929/T929","miss")]),
-           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=1,
+           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=2,
            cexpop=1.5,distxax=0.1,
            mef=c(0,0,1,1,0),colbord=NA,angl=-10)
 mtext("kdr2\ngenotype",side=2,line=-1,cex=1,las=1)
