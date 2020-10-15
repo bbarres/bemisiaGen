@@ -398,24 +398,6 @@ par(op)
 #export to .pdf 4 x 7 inches
 
 
-#plotting pop = geographic pop, subpop = environment within pop
-#pick a set of colors, color based on ppt
-coloor<-c("#217821","#8feA8f", #MEAM1
-          "#00aad4","#80e5ff", #IO
-          "#ff2a2a","#ff8080", #Hybride
-          "#8d5fd3","#e5d5ff", #MED-Q
-          "white")
-structplot(t(temp[,c("MED-Q")]),
-           coloor[c(8,9)],effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=5,
-           mef=c(0,0,1,0,0),colbord=NA,angl=0)
-mtext("Species",side=2,line=-10,cex=1.5,las=1)
-rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
-     rep(0,length(temp2$cumu)),
-     temp2$cumu+temp2$decal,
-     rep(1,length(temp2$cumu)),
-     lwd=2)
-
-
 ##############################################################################/
 #END
 ##############################################################################/
