@@ -437,7 +437,7 @@ temp$`L925/I925`<-ifelse(is.na(temp$`L925/I925`),0,1)
 temp$`L925/L925`<-ifelse(is.na(temp$`L925/L925`),0,1)
 temp$miss<-ifelse(is.na(temp$miss),0,1)
 #reordering the dataset
-setorder(temp,environment,pop_geo,-species)
+setorder(temp,environment,pop_geo,-MeIo_clust1)
 head(temp)
 
 
@@ -472,7 +472,7 @@ mtext("Hybrid",side=2,line=-3,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
-           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
 mtext("kdr1 genotype",side=2,line=-3,cex=1,las=1)
 
@@ -497,7 +497,7 @@ mtext("Hybrid",side=2,line=-1.5,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
-           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
 mtext("kdr1 genotype",side=2,line=-1.5,cex=1,las=1)
 
@@ -522,7 +522,7 @@ mtext("Hybrid",side=2,line=-2,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
-           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
 mtext("kdr1 genotype",side=2,line=-2,cex=1,las=1)
 
@@ -547,7 +547,7 @@ mtext("Hybrid",side=2,line=-0.9,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
-           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
 mtext("kdr1 genotype",side=2,line=-0.9,cex=1,las=1)
 
