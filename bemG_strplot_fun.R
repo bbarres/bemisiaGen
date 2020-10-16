@@ -20,7 +20,7 @@ structplot<-function(qmat,coolcol,effP,nameP,leg_y="",cexpop=1,cexy=2,
   #'cexpop': the cex factor for the population name on the x-axis
   #'cexy': the cex factor for the Y-legend
   #'mef': a vector of length 5 to pimp the graph. Each 1 value add a feature
-   #the first is for the external rectangle, the second is to deliminate the 
+   #the first is for the external rectangle, the second is to delineate the 
    #different populations, the third is for adding an x-axis with tick, the 
    #fourth is for adding the name of the different populations and the fifth 
    #is for adding a Y legend
