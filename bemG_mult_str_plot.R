@@ -110,6 +110,12 @@ par(op)
 #preparing the dataset
 temp<-bemipop[bemipop$species!="MED-Q",]
 temp<-as.data.table(temp)
+#reorder environment by decreasing anthropization
+temp$environment<-factor(temp$environment,
+                         levels(temp$environment)[c(2,4,1,3)])
+temp$pop_geo<-factor(temp$pop_geo,
+                     levels(temp$pop_geo)[c(1,12,23,34,37:41,
+                                            2:11,13:22,24:33,35,36)])
 temp$species2=temp$species
 temp<-spread(temp,species2,species2)
 temp$Hybride<-as.character(temp$Hybride)
@@ -300,9 +306,12 @@ par(op)
 #preparing the dataset
 temp<-bemipop[bemipop$species=="MED-Q",]
 temp<-as.data.table(temp)
-#for the order of the different environment
+#reorder environment by decreasing anthropization
 temp$environment<-factor(temp$environment,
                          levels(temp$environment)[c(2,1,3,4)])
+temp$pop_geo<-factor(temp$pop_geo,
+                     levels(temp$pop_geo)[c(1,12,23,34,37:41,
+                                            2:11,13:22,24:33,35,36)])
 temp$species2=temp$species
 temp<-spread(temp,species2,species2)
 temp$`MED-Q`<-as.character(temp$`MED-Q`)
@@ -396,6 +405,155 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
 par(op)
 
 #export to .pdf 4 x 7 inches
+
+
+##############################################################################/
+#Bemisia BMS: plot for the combine runs by environment different lines####
+##############################################################################/
+
+#preparing the dataset
+temp<-bemipop[bemipop$species!="MED-Q",]
+temp<-as.data.table(temp)
+#reorder environment by decreasing anthropization
+temp$environment<-factor(temp$environment,
+                         levels(temp$environment)[c(2,4,1,3)])
+temp$pop_geo<-factor(temp$pop_geo,
+                     levels(temp$pop_geo)[c(1,12,23,34,37:41,
+                                            2:11,13:22,24:33,35,36)])
+temp$species2=temp$species
+temp<-spread(temp,species2,species2)
+temp$Hybride<-as.character(temp$Hybride)
+temp$Hybride<-ifelse(is.na(temp$Hybride),0,1)
+temp$MEAM1<-as.character(temp$MEAM1)
+temp$MEAM1<-ifelse(is.na(temp$MEAM1),0,1)
+temp$IO<-as.character(temp$IO)
+temp$IO<-ifelse(is.na(temp$IO),0,1)
+#preparing data mut L925I
+temp$mut_L925I<-as.character(temp$mut_L925I)
+temp$mut_L925I[is.na(temp$mut_L925I)]<-"miss"
+temp<-spread(temp,mut_L925I,mut_L925I)
+temp$`I925/I925`<-ifelse(is.na(temp$`I925/I925`),0,1)
+temp$`L925/I925`<-ifelse(is.na(temp$`L925/I925`),0,1)
+temp$`L925/L925`<-ifelse(is.na(temp$`L925/L925`),0,1)
+temp$miss<-ifelse(is.na(temp$miss),0,1)
+#reordering the dataset
+setorder(temp,environment,pop_geo,-species)
+head(temp)
+
+
+layout(matrix(c(1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,3,3,3,3,
+                0,0,0,0,0,0,0,0,
+                4,4,0,0,4,4,0,0,4,4,0,0,5,5,0,0,6,6,0,0,
+                0,0,0,0,0,0,0,0,
+                7,7,7,0,7,7,7,0,7,7,7,0,8,8,8,0,9,9,9,0,
+                0,0,0,0,0,0,0,0,
+                10,0,0,0,10,0,0,0,10,0,0,0,11,0,0,0,12,
+                0,0,0),26,4,byrow=TRUE),
+       widths=c(267,70,66,98))
+op<-par(mar=c(0.5,6,0.1,0),oma=c(5,0,5,0))
+
+#Greenhouse
+sstemp<-temp[temp$environment=="Greenhouse",]
+sstemp<-drop.levels(sstemp,reorder=FALSE)
+coloor<-brewer.pal(8,"Dark2")[1:2]
+poptiquet<-names(table(sstemp$pop_geo))
+effpop<-as.numeric(table(sstemp$pop_geo))
+structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Greenhouse",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Genetic\nassignment",side=2,line=-3,cex=1,las=1)
+#pick a set of colors, color based on ppt
+coloor<-c("cyan2","white","white","white")
+structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Hybride",side=2,line=-3,cex=1,las=1)
+#pick a set of colors
+coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           mef=c(0,1,1,1,0),colbord=NA,angl=0)
+mtext("kdr1 genotype",side=2,line=-3,cex=1,las=1)
+
+#Open field
+sstemp<-temp[temp$environment=="Open_field",]
+sstemp<-drop.levels(sstemp,reorder=FALSE)
+coloor<-brewer.pal(8,"Dark2")[1:2]
+poptiquet<-names(table(sstemp$pop_geo))
+effpop<-as.numeric(table(sstemp$pop_geo))
+par(mar=c(0.5,7.4,0.1,0))
+structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Open field",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Genetic\nassignment",side=2,line=-1.5,cex=1,las=1)
+#pick a set of colors, color based on ppt
+coloor<-c("cyan2","white","white","white")
+structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Hybride",side=2,line=-1.5,cex=1,las=1)
+#pick a set of colors
+coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           mef=c(0,1,1,1,0),colbord=NA,angl=0)
+mtext("kdr1 genotype",side=2,line=-1.5,cex=1,las=1)
+
+#Field surroundings
+sstemp<-temp[temp$environment=="Field_surroundings",]
+sstemp<-drop.levels(sstemp,reorder=FALSE)
+coloor<-brewer.pal(8,"Dark2")[1:2]
+poptiquet<-names(table(sstemp$pop_geo))
+effpop<-as.numeric(table(sstemp$pop_geo))
+par(mar=c(0.5,6.7,0.1,0))
+structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Field surroundings",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Genetic\nassignment",side=2,line=-2,cex=1,las=1)
+#pick a set of colors, color based on ppt
+coloor<-c("cyan2","white","white","white")
+structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Hybride",side=2,line=-2,cex=1,las=1)
+#pick a set of colors
+coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           mef=c(0,1,1,1,0),colbord=NA,angl=0)
+mtext("kdr1 genotype",side=2,line=-2,cex=1,las=1)
+
+#Non-cultivated
+sstemp<-temp[temp$environment=="Non-cultivated",]
+sstemp<-drop.levels(sstemp,reorder=FALSE)
+coloor<-brewer.pal(8,"Dark2")[1:2]
+poptiquet<-names(table(sstemp$pop_geo))
+effpop<-as.numeric(table(sstemp$pop_geo))
+par(mar=c(0.5,8,0.1,0))
+structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Non-cultivated",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Genetic\nassignment",side=2,line=-0.9,cex=1,las=1)
+#pick a set of colors, color based on ppt
+coloor<-c("cyan2","white","white","white")
+structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
+           coloor,effpop,poptiquet,spacepop=0,
+           mef=c(0,1,1,0,0),colbord=NA,angl=0)
+mtext("Hybride",side=2,line=-0.9,cex=1,las=1)
+#pick a set of colors
+coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
+           coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.1,
+           mef=c(0,1,1,1,0),colbord=NA,angl=0)
+mtext("kdr1 genotype",side=2,line=-0.9,cex=1,las=1)
+
+par(op)
+
+#export to .pdf 10 x 15 inches
 
 
 ##############################################################################/

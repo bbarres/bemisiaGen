@@ -47,7 +47,6 @@ dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=7,n.pca=7)
 #DAPC figures####
 ##############################################################################/
 
-
 colove<-brewer.pal(8,"Dark2")[c(1,2,3,4)]
 colove2<-brewer.pal(8,"Set1")[c(1,2,3,4)]
 colove3<-brewer.pal(8,"Set2")[c(1,2,3)]
@@ -81,18 +80,23 @@ scatter(dapcbemAde,xax=1,yax=2,posi.da="topright",col=colove3,
         grp=bemAde@other$kdr)
 par(op)
 
-#expor to .pdf 10 x 10
+#export to .pdf 10 x 10 inches
 
 
 #the graph use for the article
+colove5<-c("#d7191c","#2b83ba","#abdda4","#c2a5cf")
 clustbemAde<-find.clusters(bemAde,n.pca=40,max.n.clust=35) #pick 7 clusters
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=20)
 #a scatter plot but instead of using dapc group for grp, we use the species
 scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove5,
-        scree.pca=TRUE,scree.da=TRUE,cex=1.5,cstar=1,solid=1,
+        scree.pca=TRUE,scree.da=TRUE,cex=1.5,cstar=0,solid=1,
         cellipse=1.5,axesell=TRUE,pch=c(15,1,2,18),
-        grp=bemAde@other$species)
-#expor to .pdf 7 x 7
+        grp=bemAde@other$species,
+        label=c("Hybride","IO","MEAM1","MED"))
+
+#export to .pdf 7 x 7 inches
+
+
 
 
 #same thing but instead of dapc group, we use sampling environment
