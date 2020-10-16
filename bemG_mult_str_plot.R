@@ -468,7 +468,7 @@ coloor<-c("cyan2","white","white","white")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Hybride",side=2,line=-3,cex=1,las=1)
+mtext("Hybrid",side=2,line=-3,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
@@ -493,7 +493,7 @@ coloor<-c("cyan2","white","white","white")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Hybride",side=2,line=-1.5,cex=1,las=1)
+mtext("Hybrid",side=2,line=-1.5,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
@@ -518,7 +518,7 @@ coloor<-c("cyan2","white","white","white")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Hybride",side=2,line=-2,cex=1,las=1)
+mtext("Hybrid",side=2,line=-2,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
@@ -543,7 +543,7 @@ coloor<-c("cyan2","white","white","white")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Hybride",side=2,line=-0.9,cex=1,las=1)
+mtext("Hybrid",side=2,line=-0.9,cex=1,las=1)
 #pick a set of colors
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
