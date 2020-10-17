@@ -308,7 +308,7 @@ temp<-bemipop[bemipop$species=="MED-Q",]
 temp<-as.data.table(temp)
 #reorder environment by decreasing anthropization
 temp$environment<-factor(temp$environment,
-                         levels(temp$environment)[c(2,1,3,4)])
+                         levels(temp$environment)[c(2,4,1,3)])
 temp$pop_geo<-factor(temp$pop_geo,
                      levels(temp$pop_geo)[c(1,12,23,34,37:41,
                                             2:11,13:22,24:33,35,36)])
@@ -359,49 +359,68 @@ layout(matrix(c(1,1,1,2,3),5,1,byrow=TRUE))
 #plotting pop = geographic pop, subpop = environment within pop
 #pick a set of colors
 coloor<-brewer.pal(8,"Dark2")[3:5]
-op<-par(mar=c(0.1,6,0.1,0),oma=c(3,0,5,0))
+op<-par(mar=c(0.1,8,0.1,0),oma=c(3,0,3.5,3))
 structplot(t(temp[,c("Med_clust1","Med_clust2","Med_clust3")]),
-           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=2,
-           mef=c(0,0,1,0,0),colbord=NA,angl=0)
+           coloor,effpop[c(1,2,3)],poptiquet[c(1,2,3)],spacepop=2,
+           mef=c(0,0,0,0,0),colbord=NA,angl=0)
 mtext("Genetic\nassignment",side=2,line=-1,cex=1,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
      rep(1,length(temp2$cumu)),
      lwd=2)
-axis(3,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+axis(1,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
        (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
+     labels=FALSE,pos=0,lwd.ticks=2,lwd=0)
+#adding the name of the environment on the top of the barplot
+decal<-c(0,cumsum(rep(2,length(effpop[c(1,2,4)])-1)))
+axis(3,at=c(0,cumsum(effpop[c(1,2,3)]))[1:length(effpop[c(1,2,3)])]+decal+
+             (cumsum(effpop[c(1,2,3)])-
+        c(0,cumsum(effpop[c(1,2,3)]))[1:length(effpop[c(1,2,3)])])/2,
      labels=FALSE,pos=1,lwd.ticks=2,lwd=0)
-text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
-       (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-1,
-     rep(par("usr")[4]+0.050,length(temp2$cumu)),labels=temp2$Var1,
-     srt=45,xpd=NA,pos=4,cex=1.2)
+text(c(0,cumsum(effpop[c(1,2,3)]))[1:length(effpop[c(1,2,3)])]+decal+
+             (cumsum(effpop[c(1,2,3)])-
+        c(0,cumsum(effpop[c(1,2,3)]))[1:length(effpop[c(1,2,3)])])/2-5,
+     rep(par("usr")[4]+0.1),length(effpop[c(1,2,3)]),
+     labels=c("Greenhouse","Open field","     Field   \nsurroundings"),
+     srt=0,xpd=NA,pos=4,cex=1.4)
+
 #plotting pop = geographic pop, subpop = environment within pop
 #pick a set of colors, color based on ppt
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(temp[,c("I925/I925","L925/I925","L925/L925","miss")]),
-           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=2,
+           coloor,effpop[c(1,2,3)],poptiquet[c(1,2,3)],spacepop=2,
            cexpop=1.5,distxax=0.1,
-           mef=c(0,0,1,0,0),colbord=NA,angl=0)
-mtext("kdr1\ngenotype",side=2,line=-1,cex=1,las=1)
+           mef=c(0,0,0,0,0),colbord=NA,angl=0)
+mtext("kdr1 genotype",side=2,line=-1,cex=1,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
      rep(1,length(temp2$cumu)),
      lwd=2)
+axis(1,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+             (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
+     labels=FALSE,pos=0,lwd.ticks=2,lwd=0)
 #plotting pop = geographic pop, subpop = environment within pop
 #pick a set of colors, color based on ppt
 coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
 structplot(t(temp[,c("V929/V929","T929/V929","T929/T929","miss")]),
-           coloor,effpop[c(1,2,4)],poptiquet[c(1,2,4)],spacepop=2,
+           coloor,effpop[c(1,2,3)],poptiquet[c(1,2,3)],spacepop=2,
            cexpop=1.5,distxax=0.1,
-           mef=c(0,0,1,1,0),colbord=NA,angl=-10)
-mtext("kdr2\ngenotype",side=2,line=-1,cex=1,las=1)
+           mef=c(0,0,0,0,0),colbord=NA,angl=-10)
+mtext("kdr2 genotype",side=2,line=-1,cex=1,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
      rep(1,length(temp2$cumu)),
      lwd=2)
+axis(1,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+             (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
+     labels=FALSE,pos=0,lwd.ticks=2,lwd=0)
+text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
+             (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-0,
+     rep(par("usr")[3]-0.1,length(temp2$cumu)),labels=temp2$Var1,
+     srt=40,xpd=NA,pos=1,cex=1.0)
 par(op)
 
 #export to .pdf 4 x 7 inches
