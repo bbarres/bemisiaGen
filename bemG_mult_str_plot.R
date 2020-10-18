@@ -480,7 +480,7 @@ effpop<-as.numeric(table(sstemp$pop_geo))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Greenhouse",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Greenhouse (n=501)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-3,cex=1,las=1)
 #pick a set of colors, color based on ppt
 coloor<-c("orchid2","snow3","snow3","snow3")
@@ -505,7 +505,7 @@ par(mar=c(0.5,7.4,0.1,0))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Open field",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Open field (n=337)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-1.5,cex=1,las=1)
 #pick a set of colors, color based on ppt
 coloor<-c("orchid2","snow3","snow3","snow3")
@@ -530,7 +530,7 @@ par(mar=c(0.5,6.7,0.1,0))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Field surroundings",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Field surroundings (n=403)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-2,cex=1,las=1)
 #pick a set of colors, color based on ppt
 coloor<-c("orchid2","snow3","snow3","snow3")
@@ -555,7 +555,7 @@ par(mar=c(0.5,8,0.1,0))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
-mtext("Non-cultivated",side=3,xpd=TRUE,cex=1.7,line=0.5)
+mtext("Non-cultivated (n=267)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-0.9,cex=1,las=1)
 #pick a set of colors, color based on ppt
 coloor<-c("orchid2","snow3","snow3","snow3")
