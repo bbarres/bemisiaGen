@@ -483,7 +483,7 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
 mtext("Greenhouse (n=501)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-3,cex=1,las=1)
 #pick a set of colors, color based on ppt
-coloor<-c("orchid2","snow3","snow3","snow3")
+coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
@@ -508,7 +508,7 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
 mtext("Open field (n=337)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-1.5,cex=1,las=1)
 #pick a set of colors, color based on ppt
-coloor<-c("orchid2","snow3","snow3","snow3")
+coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
@@ -533,7 +533,7 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
 mtext("Field surroundings (n=403)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-2,cex=1,las=1)
 #pick a set of colors, color based on ppt
-coloor<-c("orchid2","snow3","snow3","snow3")
+coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
@@ -558,7 +558,7 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
 mtext("Non-cultivated (n=267)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-0.9,cex=1,las=1)
 #pick a set of colors, color based on ppt
-coloor<-c("orchid2","snow3","snow3","snow3")
+coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
@@ -573,6 +573,10 @@ mtext("kdr1 genotype",side=2,line=-0.9,cex=1,las=1)
 par(op)
 
 #export to .pdf 10 x 15 inches
+
+
+
+brewer.pal(6,"YlOrRd")[c(2,4,6)]
 
 
 ##############################################################################/
