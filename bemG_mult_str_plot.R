@@ -385,9 +385,8 @@ text(c(0,cumsum(effpop[c(1,2,3)]))[1:length(effpop[c(1,2,3)])]+decal+
      labels=c("Greenhouse","Open field","     Field   \nsurroundings"),
      srt=0,xpd=NA,pos=4,cex=1.4)
 
-#plotting pop = geographic pop, subpop = environment within pop
-#pick a set of colors, color based on ppt
-coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+#ploting the genotype of kdr1 locus
+coloor<-c(brewer.pal(9,"YlOrRd")[c(8,6)],brewer.pal(9,"Greens")[5],"white")
 structplot(t(temp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop[c(1,2,3)],poptiquet[c(1,2,3)],spacepop=2,
            cexpop=1.5,distxax=0.1,
@@ -401,9 +400,9 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
 axis(1,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
              (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
      labels=FALSE,pos=0,lwd.ticks=2,lwd=0)
-#plotting pop = geographic pop, subpop = environment within pop
-#pick a set of colors, color based on ppt
-coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+
+#plotting the genotype of kdr2 locus
+coloor<-c(brewer.pal(9,"YlOrRd")[c(8,6)],brewer.pal(9,"Greens")[5],"white")
 structplot(t(temp[,c("V929/V929","T929/V929","T929/T929","miss")]),
            coloor,effpop[c(1,2,3)],poptiquet[c(1,2,3)],spacepop=2,
            cexpop=1.5,distxax=0.1,
@@ -489,7 +488,7 @@ structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-3,cex=1,las=1)
 #pick a set of colors
-coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+coloor<-c(brewer.pal(6,"YlOrRd")[c(6,4)],brewer.pal(9,"Greens")[4],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
@@ -514,7 +513,7 @@ structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-1.5,cex=1,las=1)
 #pick a set of colors
-coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+coloor<-c(brewer.pal(6,"YlOrRd")[c(6,4)],brewer.pal(9,"Greens")[4],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
@@ -539,7 +538,7 @@ structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-2,cex=1,las=1)
 #pick a set of colors
-coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+coloor<-c(brewer.pal(6,"YlOrRd")[c(6,4)],brewer.pal(9,"Greens")[4],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
@@ -564,7 +563,7 @@ structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-0.9,cex=1,las=1)
 #pick a set of colors
-coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+coloor<-c(brewer.pal(9,"YlOrRd")[c(8,6)],brewer.pal(9,"Greens")[5],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
            mef=c(0,1,1,1,0),colbord=NA,angl=0)
@@ -573,10 +572,6 @@ mtext("kdr1 genotype",side=2,line=-0.9,cex=1,las=1)
 par(op)
 
 #export to .pdf 10 x 15 inches
-
-
-
-brewer.pal(6,"YlOrRd")[c(2,4,6)]
 
 
 ##############################################################################/
