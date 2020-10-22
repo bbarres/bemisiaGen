@@ -18,6 +18,8 @@ temp<-as.data.table(temp)
 #reorder environment by decreasing anthropization
 temp$environment<-factor(temp$environment,
                          levels(temp$environment)[c(2,4,1,3)])
+levels(temp$environment)<-c("Greenhouse","Open field",
+                            "Field surroundings","Non-cultivated")
 #reorder geographical population by increasing order
 temp$pop_geo<-factor(temp$pop_geo,
                      levels(temp$pop_geo)[c(1,12,23,34,37:41,
@@ -45,14 +47,11 @@ head(temp)
 poptiquet<-names(table(temp$pop_geo))
 effpop<-as.numeric(table(temp$pop_geo))
 
-temp2<-as.data.frame(table(temp$pop_geo_env,temp$pop_geo))
+temp2<-as.data.frame(table(temp$environment,temp$pop_geo))
 temp2<-temp2[temp2$Freq!=0,]
 temp2$cumu<-cumsum(temp2$Freq)
 temp2$Var2b<-temp2$Var2[c(1,1:(length(temp2$Var2)-1))]
 temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,5))
-temp3<-as.data.table(table(temp$pop_geo_env,temp$environment))
-temp3<-temp3[temp3$N!=0,]
-temp2<-merge(temp2,temp3,by.x="Var1",by.y="V1",sort=FALSE)
 
 layout(matrix(c(1,1,1,2,3),5,1,byrow=TRUE))
 #plotting pop = geographic pop, subpop = environment within pop
@@ -73,7 +72,7 @@ axis(3,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
      labels=FALSE,pos=1,lwd.ticks=2,lwd=0)
 text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
        (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-6,
-     rep(par("usr")[4]+0.050,length(temp2$cumu)),labels=temp2$V2,
+     rep(par("usr")[4]+0.050,length(temp2$cumu)),labels=temp2$Var1,
      srt=25,xpd=NA,pos=4,cex=1.2)
 
 #pick a set of colors for hybrid status
