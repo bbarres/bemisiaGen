@@ -15,6 +15,13 @@ source("bemG_load_data.R")
 #preparing the dataset
 temp<-bemipop[bemipop$species!="MED-Q",]
 temp<-as.data.table(temp)
+#reorder environment by decreasing anthropization
+temp$environment<-factor(temp$environment,
+                         levels(temp$environment)[c(2,4,1,3)])
+#reorder geographical population by increasing order
+temp$pop_geo<-factor(temp$pop_geo,
+                     levels(temp$pop_geo)[c(1,12,23,34,37:41,
+                                            2:11,13:22,24:33,35,36)])
 temp$species2=temp$species
 temp<-spread(temp,species2,species2)
 temp$Hybride<-as.character(temp$Hybride)
@@ -32,7 +39,7 @@ temp$`L925/I925`<-ifelse(is.na(temp$`L925/I925`),0,1)
 temp$`L925/L925`<-ifelse(is.na(temp$`L925/L925`),0,1)
 temp$miss<-ifelse(is.na(temp$miss),0,1)
 #reordering the dataset
-setorder(temp,pop_geo,pop_geo_env,-species)
+setorder(temp,pop_geo,environment,-MeIo_clust1)
 head(temp)
 
 poptiquet<-names(table(temp$pop_geo))
@@ -51,7 +58,7 @@ layout(matrix(c(1,1,1,2,3),5,1,byrow=TRUE))
 #plotting pop = geographic pop, subpop = environment within pop
 #pick a set of colors
 coloor<-brewer.pal(8,"Dark2")[1:2]
-op<-par(mar=c(0.1,1.1,0.1,0),oma=c(3,0,5,0))
+op<-par(mar=c(0.1,1.1,0.1,0),oma=c(3,1.2,5,0))
 structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=5,
            mef=c(0,0,1,0,0),colbord=NA,angl=0)
@@ -69,30 +76,24 @@ text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
      rep(par("usr")[4]+0.050,length(temp2$cumu)),labels=temp2$V2,
      srt=25,xpd=NA,pos=4,cex=1.2)
 
-#plotting pop = geographic pop, subpop = environment within pop
-#pick a set of colors, color based on ppt
-coloor<-c("#217821","#8feA8f", #MEAM1
-          "#00aad4","#80e5ff", #IO
-          "#ff2a2a","#ff8080", #Hybride
-          "#8d5fd3","#e5d5ff", #MED-Q
-          "white")
+#pick a set of colors for hybrid status
+coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(temp[,c("Hybride","IO","MEAM1")]),
-           coloor[c(6,4,2,9)],effpop,poptiquet,spacepop=5,
+           coloor,effpop,poptiquet,spacepop=5,
            mef=c(0,0,1,0,0),colbord=NA,angl=0)
-mtext("Species",side=2,line=-10,cex=1.5,las=1)
+mtext("Hybrid",side=2,line=-10,cex=1.5,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
      rep(1,length(temp2$cumu)),
      lwd=2)
 
-#plotting pop = geographic pop, subpop = environment within pop
-#pick a set of colors, color based on ppt
-coloor<-c(brewer.pal(9,"Set1")[c(1,5,3)],"white")
+#pick a set of colors for the kdr genotype
+coloor<-c(brewer.pal(9,"YlOrRd")[c(8,6)],brewer.pal(9,"Greens")[5],"white")
 structplot(t(temp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=5,cexpop=1.5,distxax=0.1,
            mef=c(0,0,1,1,0),colbord=NA,angl=0)
-mtext("kdr\ngenotype",side=2,line=-10,cex=1.5,las=1)
+mtext("kdr1 genotype",side=2,line=-10,cex=1.5,las=1)
 rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      rep(0,length(temp2$cumu)),
      temp2$cumu+temp2$decal,
@@ -100,7 +101,7 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      lwd=2)
 par(op)
 
-#export to .pdf 4 x 40 inches
+#export to pdf 4 x 40 inches
 
 
 ##############################################################################/
@@ -203,7 +204,7 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      lwd=2)
 par(op)
 
-#export to .pdf 4 x 40 inches
+#export to pdf 4 x 40 inches
 
 
 ##############################################################################/
@@ -435,6 +436,7 @@ temp<-as.data.table(temp)
 #reorder environment by decreasing anthropization
 temp$environment<-factor(temp$environment,
                          levels(temp$environment)[c(2,4,1,3)])
+#reorder geographical population by increasing order
 temp$pop_geo<-factor(temp$pop_geo,
                      levels(temp$pop_geo)[c(1,12,23,34,37:41,
                                             2:11,13:22,24:33,35,36)])
@@ -458,7 +460,6 @@ temp$miss<-ifelse(is.na(temp$miss),0,1)
 setorder(temp,environment,pop_geo,-MeIo_clust1)
 head(temp)
 
-
 layout(matrix(c(1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,3,3,3,3,
                 0,0,0,0,0,0,0,0,
                 4,4,0,0,4,4,0,0,4,4,0,0,5,5,0,0,6,6,0,0,
@@ -481,13 +482,13 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Greenhouse (n=501)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-3,cex=1,las=1)
-#pick a set of colors, color based on ppt
+#pick a set of colors for hybrid status
 coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-3,cex=1,las=1)
-#pick a set of colors
+#pick a set of colors for kdr genotype
 coloor<-c(brewer.pal(6,"YlOrRd")[c(6,4)],brewer.pal(9,"Greens")[4],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
@@ -506,13 +507,13 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Open field (n=337)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-1.5,cex=1,las=1)
-#pick a set of colors, color based on ppt
+#pick a set of colors for hybrid status
 coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-1.5,cex=1,las=1)
-#pick a set of colors
+#pick a set of colors for kdr genotype
 coloor<-c(brewer.pal(6,"YlOrRd")[c(6,4)],brewer.pal(9,"Greens")[4],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
@@ -531,13 +532,13 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Field surroundings (n=403)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-2,cex=1,las=1)
-#pick a set of colors, color based on ppt
+#pick a set of colors for hybrid status
 coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-2,cex=1,las=1)
-#pick a set of colors
+#pick a set of colors for kdr genotype
 coloor<-c(brewer.pal(6,"YlOrRd")[c(6,4)],brewer.pal(9,"Greens")[4],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
@@ -556,13 +557,13 @@ structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Non-cultivated (n=267)",side=3,xpd=TRUE,cex=1.7,line=0.5)
 mtext("Genetic\nassignment",side=2,line=-0.9,cex=1,las=1)
-#pick a set of colors, color based on ppt
+#pick a set of colors for hybrid status
 coloor<-c("orchid3","snow3","snow3","snow3")
 structplot(t(sstemp[,c("Hybride","IO","MEAM1")]),
            coloor,effpop,poptiquet,spacepop=0,
            mef=c(0,1,1,0,0),colbord=NA,angl=0)
 mtext("Hybrid",side=2,line=-0.9,cex=1,las=1)
-#pick a set of colors
+#pick a set of colors for kdr genotype
 coloor<-c(brewer.pal(9,"YlOrRd")[c(8,6)],brewer.pal(9,"Greens")[5],"white")
 structplot(t(sstemp[,c("I925/I925","L925/I925","L925/L925","miss")]),
            coloor,effpop,poptiquet,spacepop=0,cexpop=1.5,distxax=0.25,
@@ -571,7 +572,7 @@ mtext("kdr1 genotype",side=2,line=-0.9,cex=1,las=1)
 
 par(op)
 
-#export to .pdf 10 x 15 inches
+#export to pdf 10 x 15 inches
 
 
 ##############################################################################/
