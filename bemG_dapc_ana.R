@@ -97,8 +97,6 @@ scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove5,
 #export to .pdf 7 x 7 inches
 
 
-
-
 #same thing but instead of dapc group, we use sampling environment
 scatter(dapcbemAde,xax=1,yax=2,grp=bemAde@strata$environment,
         posi.da="topright")
