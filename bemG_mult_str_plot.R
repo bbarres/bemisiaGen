@@ -56,7 +56,7 @@ temp2$decal<-cumsum(ifelse(temp2$Var2==temp2$Var2b,0,5))
 layout(matrix(c(1,1,1,2,3),5,1,byrow=TRUE))
 #plotting pop = geographic pop, subpop = environment within pop
 #pick a set of colors
-coloor<-brewer.pal(8,"Dark2")[1:2]
+coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
 op<-par(mar=c(0.1,1.1,0.1,0),oma=c(3,1.2,5,0))
 structplot(t(temp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=5,
@@ -151,7 +151,7 @@ op<-par(mar=c(0.5,6,0.1,0),oma=c(5,0,5,0))
 #Greenhouse
 sstemp<-temp[temp$environment=="Greenhouse",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
-coloor<-brewer.pal(8,"Dark2")[1:2]
+coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
 poptiquet<-names(table(sstemp$pop_geo))
 effpop<-as.numeric(table(sstemp$pop_geo))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
@@ -175,7 +175,7 @@ mtext("kdr1 genotype",side=2,line=-3,cex=1,las=1)
 #Open field
 sstemp<-temp[temp$environment=="Open_field",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
-coloor<-brewer.pal(8,"Dark2")[1:2]
+coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
 poptiquet<-names(table(sstemp$pop_geo))
 effpop<-as.numeric(table(sstemp$pop_geo))
 par(mar=c(0.5,7.4,0.1,0))
@@ -200,7 +200,7 @@ mtext("kdr1 genotype",side=2,line=-1.5,cex=1,las=1)
 #Field surroundings
 sstemp<-temp[temp$environment=="Field_surroundings",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
-coloor<-brewer.pal(8,"Dark2")[1:2]
+coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
 poptiquet<-names(table(sstemp$pop_geo))
 effpop<-as.numeric(table(sstemp$pop_geo))
 par(mar=c(0.5,6.7,0.1,0))
@@ -225,7 +225,7 @@ mtext("kdr1 genotype",side=2,line=-2,cex=1,las=1)
 #Non-cultivated
 sstemp<-temp[temp$environment=="Non-cultivated",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
-coloor<-brewer.pal(8,"Dark2")[1:2]
+coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
 poptiquet<-names(table(sstemp$pop_geo))
 effpop<-as.numeric(table(sstemp$pop_geo))
 par(mar=c(0.5,8,0.1,0))
