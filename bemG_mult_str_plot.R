@@ -311,7 +311,9 @@ temp2<-merge(temp2,temp3,by.x="id1",by.y="id2",sort=FALSE)
 layout(matrix(c(1,1,1,2,3),5,1,byrow=TRUE))
 #plotting pop = geographic pop, subpop = environment within pop
 #pick a set of colors
-coloor<-brewer.pal(8,"Dark2")[3:5]
+coloor<-c(brewer.pal(9,"RdPu")[9],
+          brewer.pal(8,"Dark2")[4],
+          brewer.pal(11,"PiYG")[9])
 op<-par(mar=c(0.1,8,0.1,0),oma=c(3,0,3.5,3))
 structplot(t(temp[,c("Med_clust1","Med_clust2","Med_clust3")]),
            coloor,effpop[c(1,2,3)],poptiquet[c(1,2,3)],spacepop=2,
