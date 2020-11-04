@@ -85,14 +85,17 @@ par(op)
 
 #the graph use for the article
 colove5<-c("#d7191c","#2b83ba","#abdda4","#c2a5cf")
+colove6<-c("#9e000a","#3540eb","#2deb31","#8c429e")
+#final set of colors Hybrid/red-IO/orange-MEAM1/vert-MED/bleu
+colove7<-c("#d7191c","#fdae61","#abdda4","#2b83ba")
 clustbemAde<-find.clusters(bemAde,n.pca=40,max.n.clust=35) #pick 7 clusters
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=20)
 #a scatter plot but instead of using dapc group for grp, we use the species
-scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove5,
-        scree.pca=TRUE,scree.da=TRUE,cex=1.5,cstar=0,solid=1,
-        cellipse=1.5,axesell=TRUE,pch=c(15,1,2,18),
+scatter(dapcbemAde,xax=1,yax=2,posi.da="bottomright",col=colove7,
+        scree.pca=TRUE,scree.da=TRUE,cex=1.3,cstar=0,solid=1,
+        cellipse=1.5,axesell=TRUE,pch=c(0,1,2,5),
         grp=bemAde@other$species,
-        label=c("Hybride","IO","MEAM1","MED"))
+        label=c("Hybrid","IO","MEAM1","MED"))
 
 #export to .pdf 7 x 7 inches
 
