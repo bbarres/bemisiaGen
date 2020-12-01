@@ -39,7 +39,7 @@ table(pop(bemAde),clustbemAde$grp)
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=100)
 temp<-optim.a.score(dapcbemAde)
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=30)
-temp<-optim.a.score(dapcbemAde) #based on this result, we finaly chose 7 PCs
+temp<-optim.a.score(dapcbemAde) #based on this result, we finally chose 7 PCs
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=7,n.pca=7)
 
 
