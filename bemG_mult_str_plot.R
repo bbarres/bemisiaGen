@@ -100,7 +100,7 @@ rect(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal,
      lwd=2)
 par(op)
 
-#export to pdf 4 x 40 inches
+#export to pdf 40 x 4 inches
 
 
 ##############################################################################/
@@ -249,7 +249,7 @@ mtext("kdr1 genotype",side=2,line=-0.9,cex=1,las=1)
 
 par(op)
 
-#export to pdf 10 x 15 inches
+#export to pdf 15 x 10 inches
 
 
 ##############################################################################/
@@ -377,7 +377,7 @@ text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
      srt=40,xpd=NA,pos=1,cex=1.0)
 par(op)
 
-#export to .pdf 4 x 7 inches
+#export to .pdf 7 x 4 inches
 
 
 ##############################################################################/
