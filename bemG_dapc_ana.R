@@ -87,7 +87,7 @@ par(op)
 colove5<-c("#d7191c","#2b83ba","#abdda4","#c2a5cf")
 colove6<-c("#9e000a","#3540eb","#2deb31","#8c429e")
 #final set of colors Hybrid/red-IO/orange-MEAM1/vert-MED/bleu
-colove7<-c("#d7191c","#fdae61","#abdda4","#2b83ba")
+colove7<-c("#d7191c","#2b83ba","#fdae61","#abdda4")
 clustbemAde<-find.clusters(bemAde,n.pca=40,max.n.clust=35) #pick 7 clusters
 dapcbemAde<-dapc(bemAde,clustbemAde$grp,n.da=5,n.pca=20)
 #a scatter plot but instead of using dapc group for grp, we use the species
