@@ -152,7 +152,7 @@ op<-par(mar=c(0.5,6,0.1,0),oma=c(5,0,5,0))
 sstemp<-temp[temp$environment=="Greenhouse",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
 coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
-poptiquet<-names(table(sstemp$pop_geo))
+poptiquet<-substr(names(table(sstemp$pop_geo)),2,3)
 effpop<-as.numeric(table(sstemp$pop_geo))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
            coloor,effpop,poptiquet,spacepop=0,
@@ -176,7 +176,7 @@ mtext("kdr1 genotype",side=2,line=-3,cex=1,las=1)
 sstemp<-temp[temp$environment=="Open_field",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
 coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
-poptiquet<-names(table(sstemp$pop_geo))
+poptiquet<-substr(names(table(sstemp$pop_geo)),2,3)
 effpop<-as.numeric(table(sstemp$pop_geo))
 par(mar=c(0.5,7.4,0.1,0))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
@@ -201,7 +201,7 @@ mtext("kdr1 genotype",side=2,line=-1.5,cex=1,las=1)
 sstemp<-temp[temp$environment=="Field_surroundings",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
 coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
-poptiquet<-names(table(sstemp$pop_geo))
+poptiquet<-substr(names(table(sstemp$pop_geo)),2,3)
 effpop<-as.numeric(table(sstemp$pop_geo))
 par(mar=c(0.5,6.7,0.1,0))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
@@ -226,7 +226,7 @@ mtext("kdr1 genotype",side=2,line=-2,cex=1,las=1)
 sstemp<-temp[temp$environment=="Non-cultivated",]
 sstemp<-drop.levels(sstemp,reorder=FALSE)
 coloor<-c(brewer.pal(8,"Dark2")[2],brewer.pal(9,"Blues")[9])
-poptiquet<-names(table(sstemp$pop_geo))
+poptiquet<-substr(names(table(sstemp$pop_geo)),2,3)
 effpop<-as.numeric(table(sstemp$pop_geo))
 par(mar=c(0.5,8,0.1,0))
 structplot(t(sstemp[,c("MeIo_clust1","MeIo_clust2")]),
@@ -372,9 +372,11 @@ axis(1,at=c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
              (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2,
      labels=FALSE,pos=0,lwd.ticks=2,lwd=0)
 text(c(0,temp2$cumu)[1:length(temp2$cumu)]+temp2$decal+
-             (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-0,
-     rep(par("usr")[3]-0.1,length(temp2$cumu)),labels=temp2$Var1,
-     srt=40,xpd=NA,pos=1,cex=1.0)
+             (temp2$cumu-c(0,temp2$cumu)[1:length(temp2$cumu)])/2-0+
+             c(0,0,-0.5,0.3,0,0),
+     rep(par("usr")[3]-0.1,length(temp2$cumu)),
+     labels=substr(temp2$Var1,2,3),
+     srt=0,xpd=NA,pos=1,cex=1.0)
 par(op)
 
 #export to .pdf 7 x 4 inches
