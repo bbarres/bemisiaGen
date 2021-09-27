@@ -85,7 +85,7 @@ box(bty="l",lwd=4)
 text(graf,kdrDistr$n+15,
      labels=as.character(kdrDistr$n),font=2)
 mtext(levels(kdrDistr$species)[c(3,2,4,1)],at=graf[c(2,5,8,11)],
-      line=1.5,cex=1.5,side=1,col=colove7)
+      line=1.5,cex=1.4,side=1,font=2)
 mtext("Species", at=9.4,line=3,cex=2,side=1,
       font=2,padj=1)
 legend(12,800,
