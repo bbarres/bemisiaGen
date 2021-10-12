@@ -25,6 +25,7 @@ library(vegan)
 library(spatstat)
 library(spatgraphs)
 library(tidyr)
+library(igraph)
 
 #loading the functions
 source("bemG_strplot_fun.R")

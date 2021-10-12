@@ -210,7 +210,7 @@ shortest_paths(temp2)
 
 
 
-#map with an additionnal layer for the minimum spanning network
+#map with an additional layer for the minimum spanning network
 plot(ReuDep$geometry,col=brewer.pal(11,"Spectral")[6],lwd=3)
 plot(ReuUrb,col=brewer.pal(9,"RdPu")[3],
      border=brewer.pal(9,"RdPu")[3],add=TRUE)
