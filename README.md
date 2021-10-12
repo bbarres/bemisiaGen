@@ -3,7 +3,7 @@
 *The data and R code used for the related study. This study is a part of the PhD thesis of Alizée Taquet.*
 
 
-![alt_text](https://am3pap005files.storage.live.com/y4mI9YPhfeKeHbps0ak0igJOD0BZ-Cvog-ZqaWMkkVYWF3r3w78ZjTaFw7CbTZZs6iJgbQuhimq6_Yo48mnIUYcvKbw4NiUO_ZNC_mVtHl2GGEGAKiykLFVdcZlJBhkEofRDoiQiCYrjy5VR66bOXIozcy6uUKhfUfeDJtNQA6cK0d10sDkUNQzJh7vRNRIHXdX?width=1584&height=588&cropmode=none)
+![alt_text](https://am3pap005files.storage.live.com/y4mLAUTj_dFHf9lTTOqNQUOcfotjPFDX-sTivwhbD9sfyuCOipemF_KtXczK-fLqGRmdicIWShqNNEYshw0UZcd4W-apRHqMqlzxYi3RtTsJ-jnC9wGlLHnepU1QG5z0mUmcTT6F4w3TiSbcU20ByLo6MlUBIJ1MYuvtdl8FNGY3PUq3b3JzCSHnMs30TQsouIa?width=1584&height=588&cropmode=none)
 
 
 ## Context
