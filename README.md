@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/240797439.svg)](https://zenodo.org/badge/latestdoi/240797439)
+
 # Supporting data and code for: Distribution of invasive *versus* native whitefly species and their pyrethroid knock-down resistance allele in a context of interspecific hybridization
 
 *The data and R code used for the related study. This study is a part of the PhD thesis of Alizée Taquet.*
