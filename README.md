@@ -21,8 +21,11 @@ The first data set contains the results of the dose-response experiments. Each l
 
 
 ## R scripts
-+ **load_bemisia_data.R**: the script to load the different datasets and the necessary package in the environment
-+ **bioassa
++ **bemG_load_data.R**: the script to load the different data sets and the necessary packages in the environment
++ **bemG_dapc_ana.R**: the script to perform the DAPC analysis
++ **bemG_div_ana.R**: a script to compute some diversity indices for the population
++ **bemG_div_plot.R**: a script for plotting figures of diversity indices
++ **bemG_kdrdistriplot**: a script for
 
 
 

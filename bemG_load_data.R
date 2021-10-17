@@ -6,26 +6,26 @@
 
 #loading the  necessary libraries
 library(adegenet)
+library(classInt)
 library(data.table)
-library(gdata)
-library(RColorBrewer)
 library(diveRsity)
+library(elevatr)
+library(gdata)
 library(hierfstat)
-library(PopGenReport)
-library(poppr)
-library(rgdal)
-library(rgeos)
+library(igraph)
 library(maptools)
 library(plotrix)
-library(classInt)
+library(PopGenReport)
+library(poppr)
+library(RColorBrewer)
+library(rgdal)
+library(rgeos)
 library(sf)
-library(elevatr)
-library(tanaka)
-library(vegan)
 library(spatstat)
 library(spatgraphs)
+library(tanaka)
 library(tidyr)
-library(igraph)
+library(vegan)
 
 #loading the functions
 source("bemG_strplot_fun.R")
@@ -46,6 +46,11 @@ bemidiv<-read.table("data/bem_diversiSpec.txt",header=TRUE,sep="\t",
 #pairwise Fst between populations
 bemPairFst<-read.table("data/bem_pairWiseFST.txt",header=TRUE,sep="\t",
                        stringsAsFactors=TRUE)
+
+#kdr mutation distribution by species
+kdrDistr<-read.table("data/barplotkdr.txt",
+                     header=TRUE,sep="\t",dec=",",
+                     stringsAsFactors=TRUE)
 
 
 ##############################################################################/

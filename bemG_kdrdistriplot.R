@@ -6,9 +6,7 @@
 
 #loading the data, packages and functions
 source("bemG_load_data.R")
-kdrDistr<-read.table("data/barplotkdr.txt",
-                     header=TRUE,sep="\t",dec=",",
-                     stringsAsFactors=TRUE)
+
 summary(kdrDistr)
 
 

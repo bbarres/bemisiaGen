@@ -9,10 +9,10 @@ source("bemG_load_data.R")
 
 
 ##############################################################################/
-#preparing the dataset for within species diversity analysis####
+#preparing the data set for within species diversity analysis####
 ##############################################################################/
 
-#we first remove the 'hybride' from the dataset, so we can study each 
+#we first remove the 'hybride' from the data set, so we can study each 
 #species distinctively
 bemipop<-bemipop[bemipop$species!="Hybride",]
 bemipop<-drop.levels(bemipop)
