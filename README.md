@@ -25,8 +25,10 @@ The first data set contains the results of the dose-response experiments. Each l
 + **bemG_dapc_ana.R**: the script to perform the DAPC analysis
 + **bemG_div_ana.R**: a script to compute some diversity indices for the population
 + **bemG_div_plot.R**: a script for plotting figures of diversity indices
-+ **bemG_kdrdistriplot**: a script for
-
++ **bemG_kdrdistriplot**: a script for plotting the distribution of the kdr mutations by species
++ **bemG_mult_str_plot**: the script to plot the averaged over 50 plot for the best K
++ **bemG_str_50plot.R**: the script to plot the 50 runs of STRUCTURE for the different K
++ **bemG_strplot_fun.R**: the function to plot STRUCTURE plot
 
 
 ## Citation
