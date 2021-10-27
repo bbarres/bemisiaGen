@@ -6,7 +6,7 @@
 
 #loading the data, packages and functions
 source("bemG_load_data.R")
-#specific dataset consisting of shapefile, only useful for plotting maps
+#specific data set consisting of shapefile, only useful for plotting maps
 load("data/shapefiles/ReuDep.RData")
 load("data/shapefiles/ReuUrb.RData")
 load("data/shapefiles/ReuVeg.RData")
@@ -15,7 +15,7 @@ load("data/shapefiles/ReuAlt.RData")
 load("data/shapefiles/ReuIso.RData")
 
 #in order to extract the coordinates of the sampled populations we use the
-#genetic dataset
+#genetic data set
 bemipop<-bemipop[bemipop$species!="Hybride",]
 bemipop<-drop.levels(bemipop)
 
@@ -51,7 +51,6 @@ IoAde<-IoAde[IoAde$pop %in%
              names(summary(IoAde)$n.by.pop)[summary(IoAde)$n.by.pop>4]]
 #turning the ind file into a pop file
 popIoAde<-genind2genpop(IoAde,process.other=TRUE)
-
 
 
 ##############################################################################/

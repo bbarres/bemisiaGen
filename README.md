@@ -25,10 +25,11 @@ The first data set contains the results of the dose-response experiments. Each l
 + **bemG_dapc_ana.R**: the script to perform the DAPC analysis
 + **bemG_div_ana.R**: a script to compute diversity indices for the population
 + **bemG_div_plot.R**: a script for plotting figures of diversity indices
-+ **bemG_kdrdistriplot**: a script for plotting the distribution of the kdr mutations by species
-+ **bemG_mult_str_plot**: the script to plot Figure 3 and Figure 4 STUCTURE and STRUCTURE like plot of the average 50 runs of STRUCTURE for the best K for the two species, their hybrid status and their kdr1 genotype. The code for an additionnal figure is also included
-+ **bemG_str_50plot.R**: the script to plot the 50 runs of STRUCTURE for K ranging from 2 to 6
++ **bemG_kdrdistriplot.R**: a script for plotting the distribution of the kdr mutations by species
++ **bemG_mult_str_plot.R**: the script to plot Figure 3 and Figure 4 STUCTURE and STRUCTURE like plot of the average 50 runs of STRUCTURE for the best K for the two species, their hybrid status and their kdr1 genotype. The code for an additionnal figure is also included
++ **bemG_str_50plot.R**: the script to plot the 50 runs of STRUCTURE for K ranging from 2 to 3 and from 2 to 4 for BMS and Q species, respectively
 + **bemG_strplot_fun.R**: the function to plot STRUCTURE plot
++ **bemG_map_fig.R**: the script to plot some maps of La Réunion (one of which is used to illustrate the Github)
 
 
 ## Citation
