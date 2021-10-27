@@ -15,9 +15,25 @@ A few sentences to introduce the topic of the research
 The data sets used in the study can be found in the "dataset" folder. 
 
 The first data set contains the results of the dose-response experiments. Each line depict the results for one population of one species at one concentration of one pesticide. 
-+ insecticides-mortality.txt
-  + *population_ID*: population ID
-  + *species*: the species of *Bemisia tabaci* (either IO or MEAM1)
++ **bem_genepop.txt:**
+  + *whitefly_ID*: the ID
+  + *species*: the species of *Bemisia tabaci* (either IO, MEAM1 or MED)
+  + *pop_geo*:
+  + *pop_geo_env*:
+  + *collection_date*:
+  + *latitude*:
+  + *longitude*:
+  + *environment*:
+  + *host_plant*:
+  + *insecticide_treat*:
+  + *insecticide_list*:
+  + *H06, MS145, P59, P7, D04, P5, G03, SSA13, SSA2, SSA41, SSA6*: microsatellite data (coded as the length of the alleles with 3 digits for each allele)
+  + *mut_L925I*:
+  + *mut_T929V*:
+  + *MeIo_clust1,	MeIo_clust2*: Q-matrix for IO and MEAM1, obtained by averaging the runs belonging to the major solution over 50 runs with K=2
+  + *Med_clust1, Med_clust2,	Med_clust3*: Q-matrix for MED, obtained by averaging the runs belonging to the major solution over 50 runs with K=3
+
++ **50runs:** a folder containing 15 files that allow the plotting of 50 STRUCTURE runs for each K of interest (from K=2 to K=3 for IO and MEAM1, and from K=2 to K=4 for MED)
 
 
 ## R scripts
