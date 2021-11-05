@@ -12,7 +12,8 @@
 A few sentences to introduce the topic of the research
 
 ## Datasets
-The data sets used in the study can be found in the "dataset" folder. 
+In this section, you will find the list of the data sets used to produce the figures of the manuscript. The data files can be found in the "data" folder. For the data tables, the name of the different variables are listed and explained as well below. There are 6 data sets used in this study.  
+ 
 
 The first data set contains the results of the dose-response experiments. Each line depict the results for one population of one species at one concentration of one pesticide. 
 + **bem_genepop.txt:**
@@ -37,6 +38,8 @@ The first data set contains the results of the dose-response experiments. Each l
 
 
 ## R scripts
+In this section, you will find the list of the different scripts used in the article to produce the figures with a brief description of their purpose.
+
 + **bemG_load_data.R**: the script to load the different data sets and the necessary packages in the environment
 + **bemG_dapc_ana.R**: the script to perform the DAPC analysis
 + **bemG_div_ana.R**: a script to compute diversity indices for the population
