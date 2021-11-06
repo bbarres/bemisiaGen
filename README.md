@@ -36,6 +36,8 @@ The first data set contains the results of the dose-response experiments. Each l
 
 + **50runs:** a folder containing 15 files that allow the plotting of 50 STRUCTURE runs for each K of interest (from K=2 to K=3 for IO and MEAM1, and from K=2 to K=4 for MED)
 
++ **shapefiles:** a folder containing the shapefiles for plotting maps
+
 
 ## R scripts
 In this section, you will find the list of the different scripts used in the article to produce the figures with a brief description of their purpose.
