@@ -3,5 +3,6 @@
 .RData
 .Ruserdata
 
-data
+data/bem_diversiSpec.txt
+data/bem_pairWiseFST.txt
 output

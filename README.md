@@ -4,19 +4,15 @@
 
 *The data and R code used for the related study. This study is a part of the PhD thesis of Alizée Taquet.*
 
-
 ![alt_text](https://am3pap005files.storage.live.com/y4mLAUTj_dFHf9lTTOqNQUOcfotjPFDX-sTivwhbD9sfyuCOipemF_KtXczK-fLqGRmdicIWShqNNEYshw0UZcd4W-apRHqMqlzxYi3RtTsJ-jnC9wGlLHnepU1QG5z0mUmcTT6F4w3TiSbcU20ByLo6MlUBIJ1MYuvtdl8FNGY3PUq3b3JzCSHnMs30TQsouIa?width=1584&height=588&cropmode=none)
-
 
 ## Context
 A few sentences to introduce the topic of the research
 
 ## Datasets
-In this section, you will find the list of the data sets used to produce the figures of the manuscript. The data files can be found in the "data" folder. For the data tables, the name of the different variables are listed and explained as well below. There are 6 data sets used in this study.  
+In this section, you will find the list of the data sets used to produce the figures of the manuscript. The data files can be found in the "data" folder. For the data tables, the name of the different variables are listed and explained as well below. There are 4 data sets used in this study.  
  
-
-The first data set contains the results of the dose-response experiments. Each line depict the results for one population of one species at one concentration of one pesticide. 
-+ **bem_genepop.txt:**
++ **bem_genepop.txt:** the first data set contains the results of the dose-response experiments. Each line depict the results for one population of one species at one concentration of one pesticide.
   + *whitefly_ID*: the ID of the indivual (unique for each individual)
   + *species*: the species of *Bemisia tabaci* (either IO, MEAM1, MED-Q or Hybrid)
   + *pop_geo*: the ID of the geographic location of the population
@@ -34,9 +30,15 @@ The first data set contains the results of the dose-response experiments. Each l
   + *MeIo_clust1,	MeIo_clust2*: Q-matrix for IO and MEAM1, obtained by averaging the runs belonging to the major solution over 50 runs with K=2
   + *Med_clust1, Med_clust2,	Med_clust3*: Q-matrix for MED, obtained by averaging the runs belonging to the major solution over 50 runs with K=3
 
++ **barplotkdr.txt:** the second data set contains the frequency of the *kdr* genotype for each *B. tabaci* species. 
+  + *species*: the species of *Bemisia tabaci* (either IO, MEAM1, MED or Hybrids)
+  + *mutation*: the genotype at the *kdr* locus using the codon coding (either L925/L925, L925/I925 or I925/I925)
+  + *genotype*: the genotype at the *kdr* locus using resistance/sensitive coding (either SS, RS or RR)
+  + *n*: the number of individuals identified for each species by *kdr* genotype combination
+
 + **50runs:** a folder containing 15 files that allow the plotting of 50 STRUCTURE runs for each K of interest (from K=2 to K=3 for IO and MEAM1, and from K=2 to K=4 for MED)
 
-+ **shapefiles:** a folder containing the shapefiles for plotting maps
++ **shapefiles:** a folder containing the shapefiles for plotting maps (source DEAL REUNION, 2020)
 
 
 ## R scripts
