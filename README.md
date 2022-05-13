@@ -7,7 +7,7 @@
 ![alt_text](https://am3pap005files.storage.live.com/y4mLAUTj_dFHf9lTTOqNQUOcfotjPFDX-sTivwhbD9sfyuCOipemF_KtXczK-fLqGRmdicIWShqNNEYshw0UZcd4W-apRHqMqlzxYi3RtTsJ-jnC9wGlLHnepU1QG5z0mUmcTT6F4w3TiSbcU20ByLo6MlUBIJ1MYuvtdl8FNGY3PUq3b3JzCSHnMs30TQsouIa?width=1584&height=588&cropmode=none)
 
 ## Context
-A few sentences to introduce the topic of the research
+Because they are isolated by the physical barrier of the surrounding waters, island systems are particularly interesting in the study of biological invasions. We investigated the diversity and genetic structure, as well as the potential hybridization between invasive and endemic *B. tabaci* species found on Reunion Island. A total of 41 populations were sampled and genotyped using neutral microsatellite markers and selected molecular markers of target-site resistance to pyrethroids. The results show very contrasted situations between species, which are probably related to the different ecological niches occupied by the different species. 
 
 ## Datasets
 In this section, you will find the list of the data sets used to produce the figures of the manuscript. The data files can be found in the "data" folder. For the data tables, the name of the different variables are listed and explained as well below. There are 4 data sets used in this study.  
@@ -61,4 +61,3 @@ You will soon be able to cite the related study:
 
 If you want to use (some of) the code found on this page or if you want to cite this repository: 
 + Benoit Barrès. [Supporting data and code for: Distribution of invasive *versus* native whitefly species and their pyrethroid knock-down resistance allele in a context of interspecific hybridization. Zenodo.](https://zenodo.org/badge/latestdoi/240797439)
-
