@@ -56,8 +56,8 @@ In this section, you will find the list of the different scripts used in the art
 
 
 ## Citation
-You will soon be able to cite the related study: 
-+ Taquet A., Jourdan-Pineau H., Simiand C., Grondin M., Barrès B.\* and Delatte H.\* [Distribution of invasive *versus* native whitefly species and their pyrethroid knock-down resistance allele in a context of interspecific hybridization. *accepted in Scientific Reports*.]()
+You can cite the related study as follow: 
++ Taquet A., Jourdan-Pineau H., Simiand C., Grondin M., Barrès B.\* and Delatte H.\* [Distribution of invasive *versus* native whitefly species and their pyrethroid knock-down resistance allele in a context of interspecific hybridization. *Scientific Reports*, 12:8448, 2022. doi:10.1038/s41598-022-12373-4](https://doi.org/10.1038/s41598-022-12373-4)
 
 If you want to use (some of) the code found on this page or if you want to cite this repository: 
 + Benoit Barrès. [Supporting data and code for: Distribution of invasive *versus* native whitefly species and their pyrethroid knock-down resistance allele in a context of interspecific hybridization. Zenodo.](https://zenodo.org/badge/latestdoi/240797439)
